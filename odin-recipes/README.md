@@ -1,1 +1,1 @@
-This project would consist of HTML and CSS. I would create a recipe website to test what have I learned from The Odin Project - Foundations (HTML). I will to try to advance on CSS to gauge some of my knowledge about it.
+This project would consist of HTML. I would create a recipe website to test what have I learned from The Odin Project - Foundations (HTML).
