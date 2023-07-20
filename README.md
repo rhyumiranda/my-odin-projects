@@ -1,7 +1,5 @@
 # my-odin-projects
-These are the projects I created from my The Odin Project Journey
+These are the projects I created from my The Odin Project Journey.
 
-Time I spent creating the Project:
-
-Project		Time
-odin-recipes    4 Hours
+odin-recipes - 5 Hours
+file:///home/coshu/repos/my-odin-projects/odin-recipes/index.html
