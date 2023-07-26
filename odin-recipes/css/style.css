@@ -1,7 +1,15 @@
+body{
+    background-color: #fffeb4;
+}
+
 .title{
     font-size: 40px;
     text-align: center;
     margin: 25px 0px -10px 0px;
+}
+
+.font{
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .homepage-description{
@@ -20,13 +28,49 @@
     width:300px;
     length: auto;
     margin: 10px 50px -10px 60px;
+    border-radius: 20px;
 }
 
 .chicken-curry{
     margin: -185px 50px -10px 375px;
 }
 
-.font{
-    font-family: Arial, Helvetica, sans-serif;
+.chicken-description{
+    font-size: 16px;
+    margin: 20px 100px 50px 375px;
 }
+
+.creamy-picture{
+    width: 300px;
+    length: left;
+    margin: 0px 50px -10px 60px;
+    border-radius: 20px;
+}
+
+.creamy-beef{
+    margin: -155px 50px -10px 375px;
+}
+
+.creamy-description{
+    font-size: 16px;
+    margin: 20px 100px -10px 375px;
+}
+
+.cordon-picture{
+    width: 300px;
+    length: left;
+    margin: 50px 50px -10px 60px;
+    border-radius: 20px;
+}
+
+.cordon{
+    margin: -155px 50px -10px 375px;
+}
+
+.cordon-description{
+    font-size: 16px;
+    margin: 20px 100px 50px 375px;
+}
+
+
 
