@@ -8,7 +8,7 @@ body{
 
 a {
     text-decoration: none;
-    font-weight: 400;
+    font-weight: bold;
     color: white;
 }
 
@@ -185,20 +185,20 @@ ul{
 
 }
 
-.button-two {
-    border: 2px solid red;
-    border-radius: 4px;
-    padding: 8px 20px 8px 20px;
-    opacity: 0.6;
-}
-
 .footer{
     display: flex;
     flex-direction: column;
-    height: 120px;
+    height: 100px;
     background-color: #1F2937;
     justify-content: center;
     align-items: center;
+}
+
+.left-cta {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 150px;
 }
 
 .cta {
@@ -207,15 +207,39 @@ ul{
     align-items: center;
     color: white;
     font-weight: 600;
+    font-size: 18px;
 
 }
 
 .cta-signup {
-
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    font-style: thin;
+    margin-top: -16px;
 }
 
 .cta-section {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    background-color: #3882F6;
+    justify-content: space-between;
+    align-items: center;
+    margin: 100px;
+    height: 100px;
+    width: auto;
+    padding: 32px;
+    border-radius: 10px;
+    gap: 1rem;
+
+}
+
+.button-two {
+    flex-shrink: 0;
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+    border: 2px solid white;
     background-color: #3882F6;
 }
