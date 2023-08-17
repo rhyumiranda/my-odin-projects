@@ -18,8 +18,8 @@ ul{
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    font-size: 18px;
-
+    font-size: 18px;    margin: 0 300px;
+    color: #1F2937;
     padding: 0px;
     margin: 0px;
     
@@ -67,7 +67,7 @@ ul{
     justify-content: center;
     font-weight: 900;
     font-size: 24px;
-    color: white;
+    color: #F9FAF8;
 }
 
 
@@ -75,12 +75,12 @@ ul{
     display: flex;
     font-size: 48px;
     font-weight: 800;
-    color: white;
+    color: #F9FAF8;
 }
 
 .title-description {
     display: flex;
-    color: white;
+    color: #E5E7EB;
     font-size: 18px;
     margin-top: -50px;
 }
@@ -106,20 +106,54 @@ ul{
     color: white;
 }
 
-.subtitle {
+.sub-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 36px;
+    font-weight: bold;
+    color: #1F2937;
 }
-
+.text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 8px;
+    margin: 0 16px;
+}
 .square-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 150px;
+    padding: 16px;
+    
 }
 
 .square{
     height: 150px;
     width: 150px;
-    border: 2px solid lightseagreen;
     border-radius: 20px;
+    border: 4px solid lightseagreen;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color:#1F2937;
+    height: 150px;
+    width: 150px;
+    padding: 4px;
 }
 
 .quote-section {
