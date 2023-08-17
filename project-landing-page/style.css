@@ -3,5 +3,141 @@ body{
     margin: 0;
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto';
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 18px;
+    border: 2px solid firebrick;
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    background-color: #152937;
+    flex: 1 0 auto;
+    height: 500px;
+}
+
+.content {
+    background-color: white;
+}
+
+.container--2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container--3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px;
+    border: 2px solid firebrick;
+    margin: 0px 100px;
+    
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 24px;
+    color: white;
+}
+
+
+.title{
+    display: flex;
+    font-size: 48px;
+    font-weight: 900;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-description {
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-one {
+    border: 2px solid red;
+    border-radius: 4px;
+    padding: 8px 20px 8px 20px;
+}
+
+.placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    width: 500px;
+    height: 200px;
+    padding: 16px;
+    margin: 16px;
+}
+
+.subtitle {
+    font-size: 36px;
+}
+
+.square-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.square{
+    height: 100px;
+    width: 100px;
+    border: 2px solid lightseagreen;
+    border-radius: 20px;
+}
+
+.quote-section {
+    background-color: #E5E7EB;
+    padding: 16px;
+}
+
+.quote{
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    font-style: italic;
+    margin: 16px;
+}
+
+.quote-author {
+    font-weight: 900;
+
+}
+
+.button-two {
+    border: 2px solid red;
+    border-radius: 4px;
+    padding: 8px 20px 8px 20px;
+    opacity: 0.6;
+}
