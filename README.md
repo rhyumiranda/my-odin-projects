@@ -5,5 +5,5 @@ odin-recipes - 5 Hours
 https://coshuly.github.io/my-odin-projects/odin-recipes/
 
 project-landing-page - 7 Hours
-https://coshuly.github.io/my-odin-projects/project-landding-page/
+https://coshuly.github.io/my-odin-projects/project-landing-page/
 
