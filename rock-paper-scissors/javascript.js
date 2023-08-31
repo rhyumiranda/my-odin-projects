@@ -7,7 +7,7 @@ function game(){
     for (let i = 0; i < 5; i++){
         const playerSelection = getUserChoice();
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        console.log(playRound(playerSelection, computerSelection))
         if (getWinner(playerSelection, computerSelection) == "Player"){
             playerScore++;
         } else if(getWinner(playerSelection, computerSelection) == "Computer"){
@@ -15,6 +15,14 @@ function game(){
         } else if(getWinner(playerSelection, computerSelection) == "Tie"){
             tieScore++;
         }
+    }
+    console.log("Game over!")
+    if(playerScore > computerScore){
+        console.log("You are the winner!");
+    } else if (playerScore < computerScore){
+        console.log("You lost, computer won!");
+    } else if (playerScore == computerScore){
+        console.log("It is a tie, nobody won!");
     }
 }
 
