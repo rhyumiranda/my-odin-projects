@@ -7,7 +7,7 @@ function game(){
     for (let i = 0; i < 5; i++){
         const playerSelection = getUserChoice();
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection))
+        playRound(playerSelection, computerSelection);
         if (getWinner(playerSelection, computerSelection) == "Player"){
             playerScore++;
         } else if(getWinner(playerSelection, computerSelection) == "Computer"){
@@ -18,9 +18,9 @@ function game(){
     }
     console.log("Game over!")
     if(playerScore > computerScore){
-        console.log("You are the winner!");
+        console.log(`You are the winner! With a score of ${playerScore} points`);
     } else if (playerScore < computerScore){
-        console.log("You lost, computer won!");
+        console.log(`You lost, computer won! With a score of ${computerScore} points`);
     } else if (playerScore == computerScore){
         console.log("It is a tie, nobody won!");
     }
