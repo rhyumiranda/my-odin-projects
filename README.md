@@ -7,3 +7,6 @@ https://coshuly.github.io/my-odin-projects/odin-recipes/
 project-landing-page - 7 Hours
 https://coshuly.github.io/my-odin-projects/project-landing-page/
 
+rock-paper-scissors - 4 Hours
+https://coshuly.github.io/my-odin-projects/rock-paper-scissors/
+
