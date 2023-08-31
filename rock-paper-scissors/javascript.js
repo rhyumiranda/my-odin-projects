@@ -16,7 +16,8 @@ function game(){
             tieScore++;
         }
     }
-    console.log("Game over!")
+
+    console.log("Game over!");
     if(playerScore > computerScore){
         console.log(`You are the winner! With a score of ${playerScore} points`);
     } else if (playerScore < computerScore){
@@ -77,5 +78,4 @@ function getWinner(playerSelection, computerSelection){
 
 const playerSelection = getUserChoice();
 const computerSelection = getComputerChoice();
-//console.log(playRound(playerSelection, computerSelection));
 game();
