@@ -1,3 +1,18 @@
+/*
+1. Connect game() function to start button.
+2. If the button is connected, try to rewrite the code to connect userChoice into the buttons
+3. After you connected userChoice button, try to check on console if it is working
+4. If it is working, try to use dom to print out scores, and winners.
+5. Test if all of them is working, add some css styling.
+6. Done.
+*/
+
+let startButton = document.getElementById("startGame");
+
+startButton.addEventListener("click", function(){
+    game();
+});
+
 function game(){
 
     let playerScore = 0;
@@ -75,3 +90,4 @@ function getWinner(playerSelection, computerSelection){
         return "Computer";
     }
 }
+
