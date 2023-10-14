@@ -75,7 +75,3 @@ function getWinner(playerSelection, computerSelection){
         return "Computer";
     }
 }
-
-const playerSelection = getUserChoice();
-const computerSelection = getComputerChoice();
-game();
