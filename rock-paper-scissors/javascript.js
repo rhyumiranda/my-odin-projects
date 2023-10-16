@@ -80,4 +80,4 @@ function getWinner(playerSelection, computerSelection){
     } else {
         return "Computer";
     }
-}
+} 
