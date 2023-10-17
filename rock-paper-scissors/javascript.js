@@ -1,28 +1,61 @@
+<<<<<<< HEAD
 let startButton = document.getElementById("startGame");
 
 startButton.addEventListener("click", function(){
     game();
 });
 
+=======
+>>>>>>> rps-ui
 function game(){
-
     let playerScore = 0;
     let computerScore = 0;
-    let tieScore = 0;
 
-    for (let i = 0; i < 5; i++){
-        const playerSelection = getUserChoice();
-        const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-        if (getWinner(playerSelection, computerSelection) == "Player"){
+    function playRound() {
+        const rockBtn = document.querySelector('#rock');
+        const paperBtn = document.querySelector('#paper');
+        const scisssorBtn = document.querySelector('#scissors');
+        const playerOptions = [rockBtn,paperBtn,scisssorBtn];
+        const computerOptions = ['rock', 'paper', 'scissors'];
+
+        playerOptions.forEach(option => {
+            option.addEventListener('click', function(){
+
+                const choiceNumber = Math.floor(Math.random()*3);
+                const computerChoice = computerOptions[choiceNumber];
+
+                winner(this.innerText, computerChoice);
+
+            });
+        });
+
+    }
+
+    function winner(player, computer) {
+        const result = document.querySelector('.result');
+        const playerScoreBoard = document.querySelector('#playerText');
+        const computerScoreBoard = document.querySelector('#computerText');
+        player = player.toLowerCase();
+        computer = computer.toLowerCase();
+
+        if(player === computer){
+            result.textContent = 'Tie';
+        } else if (
+        player === 'rock' && computer === 'scissor' ||
+        player === 'paper' && computer === 'rock' ||
+        player === 'scissors' && computer === 'paper'
+        ){
+            result.textContent = 'Player Won';
             playerScore++;
-        } else if(getWinner(playerSelection, computerSelection) == "Computer"){
+            playerScoreBoard.textContent = playerScore;
+        } else {
+            result.textContent = 'Computer Won';
             computerScore++;
-        } else if(getWinner(playerSelection, computerSelection) == "Tie"){
-            tieScore++;
+            computerScoreBoard.textContent = computerScore;
         }
     }
 
+<<<<<<< HEAD
     console.log("Game over!");
     if(playerScore > computerScore){
         console.log(`You are the winner! With a score of ${playerScore} points`);
@@ -81,3 +114,10 @@ function getWinner(playerSelection, computerSelection){
         return "Computer";
     }
 } 
+=======
+    playRound();
+
+}
+
+game();
+>>>>>>> rps-ui
