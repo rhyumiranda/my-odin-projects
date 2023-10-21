@@ -30,17 +30,17 @@ function game(){
         computer = computer.toLowerCase();
 
         if(player === computer){
-            result.textContent = 'Tie';
+            result.textContent = 'It is a Tie!';
         } else if (
         player === 'rock' && computer === 'scissor' ||
         player === 'paper' && computer === 'rock' ||
         player === 'scissors' && computer === 'paper'
         ){
-            result.textContent = 'Player Won';
+            result.textContent = `Player's ${player} beats Computer's ${computer}`;
             playerScore++;
             playerScoreBoard.textContent = playerScore;
         } else {
-            result.textContent = 'Computer Won';
+            result.textContent = `Computer's ${computer} beats Player's ${player}`;
             computerScore++;
             computerScoreBoard.textContent = computerScore;
         }
