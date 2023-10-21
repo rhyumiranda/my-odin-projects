@@ -21,13 +21,6 @@ body{
   height: 100px;
   border-radius: 20px;
 }
-
-#startGame {
-  border-radius: 10px;
-  height: 30px;
-  width: 75px;
-}
-
 .displayImage {
   display: flex;
   justify-content: center;
