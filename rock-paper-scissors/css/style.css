@@ -37,8 +37,9 @@ body{
   gap: 4rem;
 }
 
-#startGame {
+.declareWinner{
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 2rem;
 }
