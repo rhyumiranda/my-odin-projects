@@ -1,4 +1,7 @@
 function game(){
+    const playerScoreBoard = document.querySelector('#playerText');
+    const computerScoreBoard = document.querySelector('#computerText');
+    const result = document.querySelector('.result');
     let playerScore = 0;
     let computerScore = 0;
 
@@ -23,16 +26,13 @@ function game(){
     }
 
     function winner(player, computer) {
-        const result = document.querySelector('.result');
-        const playerScoreBoard = document.querySelector('#playerText');
-        const computerScoreBoard = document.querySelector('#computerText');
         player = player.toLowerCase();
         computer = computer.toLowerCase();
 
         if(player === computer){
             result.textContent = 'It is a Tie!';
         } else if (
-        player === 'rock' && computer === 'scissor' ||
+        player === 'rock' && computer === 'scissors' ||
         player === 'paper' && computer === 'rock' ||
         player === 'scissors' && computer === 'paper'
         ){
@@ -44,7 +44,26 @@ function game(){
             computerScore++;
             computerScoreBoard.textContent = computerScore;
         }
+
+        if(playerScore === 5){
+            result.textContent = `You are the Winner of the game!`;
+            restart();
+        } else if(computerScore === 5){
+            result.textContent = `Computer won the game!`;
+            restart();
+        }
     }
+
+    
+
+
+    function restart(){
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreBoard.textContent = playerScore;
+        computerScoreBoard.textContent = computerScore;
+    }
+
 
     playRound();
 
