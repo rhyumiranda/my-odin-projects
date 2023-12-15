@@ -5,6 +5,7 @@
 //Users can reset the canvas
 
 function createGrid(x){
+
   for(let row = 0; row < x; row++){
     for(let column = 0; column < x; column++){
       let gridContainer = document.querySelector("#gridContainer");
@@ -14,18 +15,24 @@ function createGrid(x){
 
     };
   };
+  
   let gridElements = document.querySelectorAll(".grid");
-  gridElements.forEach(function(element) {
-    element.style.height = (650 / x) + 'px';
-  });
-  gridElements.forEach(function(element) {
-    element.style.width = (650 / x) + 'px';
-  });
+
+  gridElements.forEach(el => el.style.height = (650 / x) + 'px');
+  gridElements.forEach(el => el.style.width = (650 / x) + 'px');
 };
+
+function clearGrid() {
+  document.querySelectorAll(".grid").forEach(el => el.remove());
+}
+
 
 function refreshGrid(){
   let newGrid = prompt("How many boxes of grid would you like to add?");
+  clearGrid();
   createGrid(newGrid);
 }
+
+
 
 createGrid(20);
