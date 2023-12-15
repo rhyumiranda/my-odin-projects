@@ -1,0 +1,19 @@
+.gridContainer {
+    display: flex;
+    flex: 1;
+    margin: auto;
+    margin-top: 10px;
+    border: solid black 5px;
+    border-radius: 10px;;
+    max-width: 100%;
+    width: 700px;
+    height: 700px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+}
