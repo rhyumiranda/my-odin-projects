@@ -1,13 +1,21 @@
-.gridContainer {
-    display: flex;
-    flex: 1;
+
+#gridContainer {
+    padding: 0px;
+    background-color: rgb(236, 236, 236);
     margin: auto;
-    margin-top: 10px;
-    border: solid black 5px;
-    border-radius: 10px;;
-    max-width: 100%;
-    width: 700px;
-    height: 700px;
+    border-radius: 20px;
+    border: solid 10px black;
+    width: 650px;
+    height: 650px;
+    font-size: 0;
+}
+
+.grid {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 1px solid black;
+    display:inline-block;
 }
 
 .title{
