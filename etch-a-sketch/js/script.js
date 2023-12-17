@@ -1,8 +1,26 @@
-//Create a canvas that is made out of grid
-//Have a slider where users are able to slide and choose number of grids
-//Users are able to draw on hovering the canvas
-//Users can erase their drawing using eraser tool
-//Users can reset the canvas
+function getNumGrid(){
+  let rangeSlider = document.createElement('input');
+  rangeSlider.type = 'range';
+  rangeSlider.id = 'slider';
+  rangeSlider.min = '1';
+  rangeSlider.max = '64';
+  rangeSlider.defaultValue = '50';
+  rangeSlider.value = '50';
+
+  let sliderValInfo = document.getElementById("sliderValInfo");
+
+  rangeSlider.addEventListener('input', function () {
+    
+    let sliderValue = parseInt(rangeSlider.value);
+    clearGrid();
+    createGrid(sliderValue);
+    console.log('Slider value:', sliderValue);
+    sliderValInfo.textContent = sliderValue + ' x ' + sliderValue;
+  });
+
+  const sliderContainer = document.getElementById('sliderContainer');
+  sliderContainer.appendChild(rangeSlider);
+}
 
 function createGrid(x){
 
@@ -12,27 +30,43 @@ function createGrid(x){
       let grid = document.createElement("div");
       grid.className = "grid";
       gridContainer.appendChild(grid);
-
     };
   };
-  
-  let gridElements = document.querySelectorAll(".grid");
 
-  gridElements.forEach(el => el.style.height = (650 / x) + 'px');
-  gridElements.forEach(el => el.style.width = (650 / x) + 'px');
+  let gridElements = document.querySelectorAll(".grid");
+  gridElements.forEach(el => el.style.height = (500 / x) + 'px');
+  gridElements.forEach(el => el.style.width = (500 / x) + 'px');
+  drawGrid();
 };
 
 function clearGrid() {
   document.querySelectorAll(".grid").forEach(el => el.remove());
 }
 
+function drawGrid() {
+  let userDrawing = false;
 
-function refreshGrid(){
-  let newGrid = prompt("How many boxes of grid would you like to add?");
-  clearGrid();
-  createGrid(newGrid);
+  document.addEventListener('mousedown', function() {
+    userDrawing = true;
+  });
+
+  document.addEventListener('mouseup', function() {
+    userDrawing = false;
+  });
+
+  let gridElements = document.querySelectorAll(".grid");
+  gridElements.forEach(function(item) {
+    item.addEventListener('mouseenter', function() {
+      if (userDrawing == true) {
+        item.style.backgroundColor = 'black';
+      }
+    });
+    item.addEventListener('click', function(){
+      if (userDrawing == false) {
+        item.style.backgroundColor = 'black';
+      }
+    })
+  });
 }
-
-
-
-createGrid(20);
+createGrid(16);
+getNumGrid();
