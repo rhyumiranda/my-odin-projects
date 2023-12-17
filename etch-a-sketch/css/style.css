@@ -1,24 +1,32 @@
 
 #gridContainer {
+    position: relative;
     padding: 0px;
     background-color: rgb(236, 236, 236);
     margin: auto;
-    border-radius: 20px;
+    border-radius: 10px;
     border: solid 10px black;
-    width: 650px;
-    height: 650px;
+    width: 500px;
+    height: 500px;
     font-size: 0;
 }
+
+#slideContainer {
+    width: 300px;
+    height: 10px;
+}
+
+
 
 .grid {
     margin: 0;
     padding: 0;
     border: none;
-    outline: 1px solid black;
     display:inline-block;
 }
 
 .title{
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
