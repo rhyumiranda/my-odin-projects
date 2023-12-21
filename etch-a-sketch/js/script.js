@@ -1,16 +1,14 @@
-function getNumGrid(){
+function createSlider(){
   let rangeSlider = document.createElement('input');
   rangeSlider.type = 'range';
   rangeSlider.id = 'slider';
   rangeSlider.min = '1';
   rangeSlider.max = '64';
-  rangeSlider.defaultValue = '50';
-  rangeSlider.value = '50';
+  rangeSlider.value = '16';
 
   let sliderValInfo = document.getElementById("sliderValInfo");
 
   rangeSlider.addEventListener('input', function () {
-    
     let sliderValue = parseInt(rangeSlider.value);
     clearGrid();
     createGrid(sliderValue);
@@ -20,7 +18,7 @@ function getNumGrid(){
 
   const sliderContainer = document.getElementById('sliderContainer');
   sliderContainer.appendChild(rangeSlider);
-}
+};
 
 function createGrid(x){
 
@@ -36,37 +34,73 @@ function createGrid(x){
   let gridElements = document.querySelectorAll(".grid");
   gridElements.forEach(el => el.style.height = (500 / x) + 'px');
   gridElements.forEach(el => el.style.width = (500 / x) + 'px');
+
   drawGrid();
 };
 
 function clearGrid() {
   document.querySelectorAll(".grid").forEach(el => el.remove());
-}
+};
 
 function drawGrid() {
   let userDrawing = false;
-
-  document.addEventListener('mousedown', function() {
-    userDrawing = true;
-  });
-
-  document.addEventListener('mouseup', function() {
-    userDrawing = false;
-  });
-
+  let eraserMode = false;
   let gridElements = document.querySelectorAll(".grid");
-  gridElements.forEach(function(item) {
-    item.addEventListener('mouseenter', function() {
+  
+
+  document.addEventListener('mousedown', () => userDrawing = true);
+  document.addEventListener('mouseup', () => userDrawing = false);
+
+  
+  gridElements.forEach(item => {
+
+    item.addEventListener('mouseenter', () => {
+      let color = document.getElementById('color-picker').value;
       if (userDrawing == true) {
-        item.style.backgroundColor = 'black';
+        if (eraserMode) {
+          item.style.backgroundColor = 'rgb(236, 236, 236)';
+        } else {
+          item.style.backgroundColor = color;
+        }
       }
     });
-    item.addEventListener('click', function(){
-      if (userDrawing == false) {
-        item.style.backgroundColor = 'black';
-      }
-    })
+
+    item.addEventListener('click', () => {
+      let color = document.getElementById('color-picker').value;
+      if (!userDrawing) {
+        if (eraserMode) {
+          item.style.backgroundColor = 'rgb(236, 236, 236)';
+        } else {
+          item.style.backgroundColor = color;
+        }
+      };
+    });
+  });
+
+  let eraserBtn = document.getElementById('eraserButton');
+  let pen = document.getElementById('pen-button');
+
+  eraserBtn.addEventListener('click', () => {
+    eraserMode = true;
+  });
+
+  pen.addEventListener('click', () => {
+    eraserMode = false;
+  });
+};
+
+function clearGridItems() {
+  let clrGridBtn = document.getElementById('clearButton');
+  clrGridBtn.addEventListener('click', function(){
+    clearGrid();
+
+    let sliderValue = parseInt(document.getElementById('slider').value);
+    createGrid(sliderValue);
   });
 }
+
+
+
 createGrid(16);
-getNumGrid();
+clearGridItems();
+createSlider();
