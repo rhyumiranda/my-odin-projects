@@ -44,21 +44,35 @@ function clearGrid() {
 
 function drawGrid() {
   let userDrawing = false;
+  let userDrawingRGB = false;
+  let userDrawingShade = false;
   let eraserMode = false;
   let gridElements = document.querySelectorAll(".grid");
-  
 
   document.addEventListener('mousedown', () => userDrawing = true);
   document.addEventListener('mouseup', () => userDrawing = false);
 
   
   gridElements.forEach(item => {
-
+    item.style.setProperty('--darkness-level', 0);
     item.addEventListener('mouseenter', () => {
       let color = document.getElementById('color-picker').value;
+      let colorRed = Math.floor(Math.random() * 256);
+      let colorBlue = Math.floor(Math.random() * 256);
+      let colorGreen = Math.floor(Math.random() * 256);
+
       if (userDrawing == true) {
         if (eraserMode) {
-          item.style.backgroundColor = 'rgb(236, 236, 236)';
+          item.style.backgroundColor = 'transparent';
+        } else if (userDrawingRGB == true){
+          item.style.backgroundColor = 'rgb('+colorRed + ',' + colorBlue + ',' + colorGreen + ')';
+        } else if (userDrawingShade == true){
+          let darknessLevel = parseFloat(item.style.getPropertyValue('--darkness-level'));
+          if (darknessLevel < 1) {
+            darknessLevel += 0.1;
+            item.style.setProperty('--darkness-level', darknessLevel);
+          }
+          item.style.backgroundColor = `rgba(0, 0, 0, ${darknessLevel})`;
         } else {
           item.style.backgroundColor = color;
         }
@@ -67,9 +81,22 @@ function drawGrid() {
 
     item.addEventListener('click', () => {
       let color = document.getElementById('color-picker').value;
+      let colorRed = Math.floor(Math.random() * 256);
+      let colorBlue = Math.floor(Math.random() * 256);
+      let colorGreen = Math.floor(Math.random() * 256);
+
       if (!userDrawing) {
         if (eraserMode) {
-          item.style.backgroundColor = 'rgb(236, 236, 236)';
+          item.style.backgroundColor = 'transparent';
+        } else if (userDrawingRGB == true){
+          item.style.backgroundColor = 'rgb('+colorRed + ',' + colorBlue + ',' + colorGreen + ')';
+        } else if (userDrawingShade == true){
+          let darknessLevel = parseFloat(item.style.getPropertyValue('--darkness-level'));
+          if (darknessLevel < 1) {
+            darknessLevel += 0.1;
+            item.style.setProperty('--darkness-level', darknessLevel);
+          }
+          item.style.backgroundColor = `rgba(0, 0, 0, ${darknessLevel})`;
         } else {
           item.style.backgroundColor = color;
         }
@@ -77,15 +104,32 @@ function drawGrid() {
     });
   });
 
-  let eraserBtn = document.getElementById('eraserButton');
-  let pen = document.getElementById('pen-button');
+  let penBtn = document.getElementById('pen-button');
+  let eraserBtn = document.getElementById('eraser-button');
+  let shadeBtn = document.getElementById('grayscale-button');
+  let rgbBtn = document.getElementById('rainbow-button');
 
   eraserBtn.addEventListener('click', () => {
     eraserMode = true;
+    userDrawingRGB = false;
   });
 
-  pen.addEventListener('click', () => {
+  penBtn.addEventListener('click', () => {
+    userDrawingShade = false;
     eraserMode = false;
+    userDrawingRGB = false;
+  });
+
+  shadeBtn.addEventListener('click', () => {
+    userDrawingShade = true;
+    eraserMode = false;
+    userDrawingRGB = false;
+  });
+
+  rgbBtn.addEventListener('click', () => {
+    userDrawingRGB = true;
+    eraserMode = false;
+    userDrawingShade = false;
   });
 };
 
@@ -98,7 +142,7 @@ function clearGridItems() {
     createGrid(sliderValue);
   });
 }
-
+ 
 
 
 createGrid(16);
