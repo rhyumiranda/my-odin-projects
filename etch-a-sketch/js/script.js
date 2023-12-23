@@ -6,7 +6,7 @@ function createSlider(){
   rangeSlider.max = '64';
   rangeSlider.value = '16';
 
-  let sliderValInfo = document.getElementById("sliderValInfo");
+  let sliderValInfo = document.getElementById("slider-value-display");
 
   rangeSlider.addEventListener('input', function () {
     let sliderValue = parseInt(rangeSlider.value);
@@ -16,7 +16,7 @@ function createSlider(){
     sliderValInfo.textContent = sliderValue + ' x ' + sliderValue;
   });
 
-  const sliderContainer = document.getElementById('sliderContainer');
+  const sliderContainer = document.getElementById('slider-container');
   sliderContainer.appendChild(rangeSlider);
 };
 
@@ -183,7 +183,7 @@ function drawGrid() {
 };
 
 function clearGridItems() {
-  let clrGridBtn = document.getElementById('clearButton');
+  let clrGridBtn = document.getElementById('clear-button');
   clrGridBtn.addEventListener('click', function(){
     clearGrid();
 
