@@ -9,20 +9,15 @@ body {
     background-color: #23395b;
 }
 
-/* .container {
-    display: flex;
-} */
-
 #title-tools-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid firebrick;
 }
 
 #grid-slider-clear-container{
     display: flex;
     flex-direction: column;
-    border: 2px solid firebrick;
+    gap: 8px;
 }
 
 #tools-container {
@@ -31,7 +26,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid 2px rgb(11, 0, 226);
     gap: 1rem;
 }
 
@@ -42,7 +36,6 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px solid firebrick;
     gap: 12px;
 }
 
@@ -54,7 +47,7 @@ body {
     width: 500px;
     height: 500px;
     font-size: 0;
-    box-shadow: 0px 0px 16px 2px rgba(98, 98, 98, 0.3);
+    box-shadow: 0px 0px 16px 4px rgba(43, 80, 88, 0.3);
     cursor: crosshair;
 }
 
@@ -96,27 +89,30 @@ input[type = "range"]::-webkit-slider-thumb{
     width: 20px;
     height: 20px;
     border-radius: 20px;
-    background-color: rgb(29, 29, 29);
+    background-color: #8ea8c3;
     cursor: pointer;
+    box-shadow: 0 0 8px 0 black;
 }
 
 input[type = "range"]::-webkit-slider-runnable-track{
     width: 350px;
     height: 20px;
-    background-color: rgb(114, 114, 114);
+    background-color: #406e8e;
     border-radius: 20px;
+    box-shadow: 0 0 8px 0 black inset;
 }
 
 #clearButton{
     padding: 8px;
     background-color: transparent;
-    border: 2px solid black;
+    border: 2px solid #406e8e;
     border-radius: 10px;
     font-size: 1rem;
+    color: #8ea8c3;
     transition: background-color 0.6s ease;
 }
 
-#eraser-button, #pen-button, #rainbow-button, #grayscale-button {
+#eraser-button, #pen-button, #rainbow-button, #blend-button {
     padding: 1rem;
     background-color: transparent;
     width: 400px;
@@ -128,13 +124,22 @@ input[type = "range"]::-webkit-slider-runnable-track{
 }
 
 #eraser-button:hover, #pen-button:hover,
-#rainbow-button:hover, #grayscale-button:hover {
-    background-color: rgb(233, 151, 0);
+#rainbow-button:hover, #blend-button:hover{
+    border: 2px solid white;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#eraser-button.hovered, #pen-button.hovered,
+#rainbow-button.hovered, #blend-button.hovered{
+    background-color: #cbf7ed;
+    color: #406e8e;
     cursor: pointer;
 }
 
 #clearButton:hover {
-    background-color: rgb(233, 151, 0);
+    border: 2px solid white;
+    color: white;
     cursor: pointer;
 }
 
@@ -148,13 +153,15 @@ input[type = "range"]::-webkit-slider-runnable-track{
 }
 
 .container {
-    margin-top: 15vh;
+    margin-top: 10vh;
+    padding: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: #161925;
     box-shadow: 0 0 1rem 6px rgba(29, 29, 29, 0.3), 0 0 3rem -6px rgba(29, 29, 29, 0.3);
+    gap: 3rem;
 }
 
 .grid {
@@ -168,6 +175,12 @@ input[type = "range"]::-webkit-slider-runnable-track{
 .grid:hover {
     background-color: rgb(217, 217, 217);
 }
+
+.hovered {
+    background-color: #cbf7ed;
+    color: black;
+    cursor: pointer;
+  }
 
 .title {
     display: flex;
