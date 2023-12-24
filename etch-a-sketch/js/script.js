@@ -36,6 +36,7 @@ function createGrid(x){
   gridElements.forEach(el => el.style.width = (500 / x) + 'px');
 
   drawGrid();
+  clearGridItems();
 };
 
 function clearGrid() {
@@ -64,6 +65,12 @@ function hexToRgb(hex) {
 
   return [r, g, b];
 }
+
+function removeHoverEffect(buttons, classList){
+  buttons.forEach(button => {
+    button.classList.remove(classList);
+  });
+}; 
 
 function drawGrid() {
   let userDrawing = false;
@@ -94,7 +101,7 @@ function drawGrid() {
           let shadedColor = shadeColor(rgbValues, 10 * darknessLevel);
           item.style.backgroundColor = 'rgb(' + shadedColor.join(',') + ')';
           // Increment the darkness level for shading
-          darknessLevel += 0.20; // Adjust the increment value as needed
+          darknessLevel += 0.50; // Adjust the increment value as needed
           item.style.setProperty('--darkness-level', darknessLevel);
         } else {
           item.style.backgroundColor = color;
@@ -119,7 +126,7 @@ function drawGrid() {
           let shadedColor = shadeColor(rgbValues, 10 * darknessLevel);
           item.style.backgroundColor = 'rgb(' + shadedColor.join(',') + ')';
           // Increment the darkness level for shading
-          darknessLevel += 0.20; // Adjust the increment value as needed
+          darknessLevel += 0.50; // Adjust the increment value as needed
           item.style.setProperty('--darkness-level', darknessLevel);
         } else {
           item.style.backgroundColor = color;
@@ -128,21 +135,13 @@ function drawGrid() {
     });
   });
 
-  let currentHighlightedButton = null;
-
-  function removeHoverEffect(){
-    if(currentHighlightedButton){
-      currentHighlightedButton.classList.remove('hovered');
-    };
-  }; 
-
   let penBtn = document.getElementById('pen-button');
   let eraserBtn = document.getElementById('eraser-button');
   let shadeBtn = document.getElementById('blend-button');
   let rgbBtn = document.getElementById('rainbow-button');
 
   eraserBtn.addEventListener('click', () => {
-    removeHoverEffect();
+    removeHoverEffect([penBtn, shadeBtn, rgbBtn], 'hovered');
 
     eraserBtn.classList.add('hovered');
     currentHighlightedButton = eraserBtn;
@@ -151,7 +150,7 @@ function drawGrid() {
   });
 
   penBtn.addEventListener('click', () => {
-    removeHoverEffect();
+    removeHoverEffect([eraserBtn, shadeBtn, rgbBtn], 'hovered');
 
     penBtn.classList.add('hovered');
     currentHighlightedButton = penBtn;
@@ -161,7 +160,7 @@ function drawGrid() {
   });
 
   shadeBtn.addEventListener('click', () => {
-    removeHoverEffect();
+    removeHoverEffect([penBtn, eraserBtn, rgbBtn], 'hovered');
 
     shadeBtn.classList.add('hovered');
     currentHighlightedButton = shadeBtn;
@@ -171,7 +170,7 @@ function drawGrid() {
   });
 
   rgbBtn.addEventListener('click', () => {
-    removeHoverEffect();
+    removeHoverEffect([penBtn, shadeBtn, eraserBtn], 'hovered');
 
     rgbBtn.classList.add('hovered');
     currentHighlightedButton = rgbBtn;
@@ -186,7 +185,6 @@ function clearGridItems() {
   let clrGridBtn = document.getElementById('clear-button');
   clrGridBtn.addEventListener('click', function(){
     clearGrid();
-
     let sliderValue = parseInt(document.getElementById('slider').value);
     createGrid(sliderValue);
   });
@@ -195,5 +193,4 @@ function clearGridItems() {
 
 
 createGrid(16);
-clearGridItems();
 createSlider();
