@@ -135,6 +135,7 @@ input[type = "range"]::-webkit-slider-runnable-track{
     border: 2px solid white;
     color: #ffffff;
     cursor: pointer;
+    transition: border 1s ease; 
 }
 
 #eraser-button.hovered, #pen-button.hovered,
@@ -148,6 +149,7 @@ input[type = "range"]::-webkit-slider-runnable-track{
     border: 2px solid white;
     color: white;
     cursor: pointer;
+    transition: border 1s ease; 
 }
 
 #slider-value-display {
@@ -206,5 +208,6 @@ input[type = "range"]::-webkit-slider-runnable-track{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 75px;
     color: #406e8e;
+    text-shadow: 0 0 8px 0 black inset;
 }
 
