@@ -12,7 +12,6 @@ function createSlider(){
     let sliderValue = parseInt(rangeSlider.value);
     clearGrid();
     createGrid(sliderValue);
-    console.log('Slider value:', sliderValue);
     sliderValInfo.textContent = sliderValue + ' x ' + sliderValue;
   });
 
@@ -21,7 +20,6 @@ function createSlider(){
 };
 
 function createGrid(x){
-
   for(let row = 0; row < x; row++){
     for(let column = 0; column < x; column++){
       let gridContainer = document.querySelector("#gridContainer");
@@ -52,16 +50,13 @@ function shadeColor(rgb, decrement) {
 }
 
 function hexToRgb(hex) {
-  // Remove the hash if it exists
   hex = hex.replace(/^#/, '');
 
-  // Parse the hex values
-  var bigint = parseInt(hex, 16);
+  let bigint = parseInt(hex, 16);
 
-  // Extract the RGB components
-  var r = (bigint >> 16) & 255;
-  var g = (bigint >> 8) & 255;
-  var b = bigint & 255;
+  let r = (bigint >> 16) & 255;
+  let g = (bigint >> 8) & 255;
+  let b = bigint & 255;
 
   return [r, g, b];
 }
@@ -139,21 +134,20 @@ function drawGrid() {
   let eraserBtn = document.getElementById('eraser-button');
   let shadeBtn = document.getElementById('blend-button');
   let rgbBtn = document.getElementById('rainbow-button');
+  let clearBtn = document.getElementById('clear-button');
 
   eraserBtn.addEventListener('click', () => {
     removeHoverEffect([penBtn, shadeBtn, rgbBtn], 'hovered');
 
     eraserBtn.classList.add('hovered');
-    currentHighlightedButton = eraserBtn;
     eraserMode = true;
     userDrawingRGB = false;
   });
 
   penBtn.addEventListener('click', () => {
     removeHoverEffect([eraserBtn, shadeBtn, rgbBtn], 'hovered');
-
+    autoHover(penBtn);
     penBtn.classList.add('hovered');
-    currentHighlightedButton = penBtn;
     userDrawingShade = false;
     eraserMode = false;
     userDrawingRGB = false;
@@ -163,7 +157,6 @@ function drawGrid() {
     removeHoverEffect([penBtn, eraserBtn, rgbBtn], 'hovered');
 
     shadeBtn.classList.add('hovered');
-    currentHighlightedButton = shadeBtn;
     userDrawingShade = true;
     eraserMode = false;
     userDrawingRGB = false;
@@ -173,12 +166,15 @@ function drawGrid() {
     removeHoverEffect([penBtn, shadeBtn, eraserBtn], 'hovered');
 
     rgbBtn.classList.add('hovered');
-    currentHighlightedButton = rgbBtn;
     userDrawingRGB = true;
     eraserMode = false;
     userDrawingShade = false;
   });
   
+  clearBtn.addEventListener('click', () =>  {
+    removeHoverEffect([penBtn, shadeBtn, eraserBtn, rgbBtn], 'hovered');
+    penBtn.classList.add('hovered');
+  });
 };
 
 function clearGridItems() {
@@ -189,8 +185,17 @@ function clearGridItems() {
     createGrid(sliderValue);
   });
 }
- 
 
+function autoHover(button){
+  button.classList.add('hovered');
+  userDrawingShade = false;
+  eraserMode = false;
+  userDrawingRGB = false;
+}
 
-createGrid(16);
-createSlider();
+window.addEventListener('load', () => {
+  let penBtn = document.getElementById('pen-button');
+  autoHover(penBtn);
+  createGrid(16);
+  createSlider();
+});
