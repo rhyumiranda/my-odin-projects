@@ -1,54 +1,68 @@
+const DEFAULT_GRID_SIZE = 16;
+const DEFAULT_GRID_MAX_SIZE = 64;
+
+//Create a range slider in which the value will be utilized by the createGrid function.
 function createSlider(){
-  let rangeSlider = document.createElement('input');
+  const rangeSlider = document.createElement('input');
   rangeSlider.type = 'range';
   rangeSlider.id = 'slider';
   rangeSlider.min = '1';
-  rangeSlider.max = '64';
-  rangeSlider.value = '16';
+  rangeSlider.max = DEFAULT_GRID_MAX_SIZE.toString();
+  rangeSlider.value = DEFAULT_GRID_SIZE.toString();
 
-  let sliderValInfo = document.getElementById("slider-value-display");
+  const sliderValInfo = document.getElementById("slider-value-display");
 
   rangeSlider.addEventListener('input', function () {
-    let sliderValue = parseInt(rangeSlider.value);
+    const sliderValue = parseInt(rangeSlider.value);
     clearGrid();
     createGrid(sliderValue);
-    sliderValInfo.textContent = sliderValue + ' x ' + sliderValue;
+    sliderValInfo.textContent = `${sliderValue} x ${sliderValue}`;
   });
 
   const sliderContainer = document.getElementById('slider-container');
   sliderContainer.appendChild(rangeSlider);
 };
 
+//Creation of row and column that would accept values and print out divs per row and column.
 function createGrid(x){
+  let gridContainer = document.querySelector("#gridContainer");
+
   for(let row = 0; row < x; row++){
     for(let column = 0; column < x; column++){
-      let gridContainer = document.querySelector("#gridContainer");
-      let grid = document.createElement("div");
+      const grid = document.createElement("div");
       grid.className = "grid";
       gridContainer.appendChild(grid);
     };
   };
 
-  let gridElements = document.querySelectorAll(".grid");
-  gridElements.forEach(el => el.style.height = (500 / x) + 'px');
-  gridElements.forEach(el => el.style.width = (500 / x) + 'px');
+  const gridElements = document.querySelectorAll(".grid");
+  const gridSize = 500 / x;
+
+  gridElements.forEach(el => {
+    el.style.height = gridSize + 'px';
+    el.style.width = gridSize + 'px'
+  })
 
   drawGrid();
   clearGridItems();
 };
 
+//This will remove the hovered divs on the grid.
 function clearGrid() {
   document.querySelectorAll(".grid").forEach(el => el.remove());
 };
 
+//This will assess the decrementation of the intensity of the color.
+//Values of decrementation would subtract 20 for each of RGB for every click.
 function shadeColor(rgb, decrement) {
   return [
-      Math.max(rgb[0] - decrement, 0),
-      Math.max(rgb[1] - decrement, 0),
-      Math.max(rgb[2] - decrement, 0)
+    Math.max(rgb[0] - decrement, 0),
+    Math.max(rgb[1] - decrement, 0),
+    Math.max(rgb[2] - decrement, 0)
   ];
-}
+};
 
+//Conversion of hex to RGB to be use for the shadeColor().
 function hexToRgb(hex) {
   hex = hex.replace(/^#/, '');
 
@@ -59,52 +73,50 @@ function hexToRgb(hex) {
   let b = bigint & 255;
 
   return [r, g, b];
-}
+};
 
+//This will remove the fixed hover of buttons when the user has selected a new button.
 function removeHoverEffect(buttons, classList){
   buttons.forEach(button => {
     button.classList.remove(classList);
   });
 }; 
 
+//This will decide what mode of drawing is gonna be used in the grid by using true or false values.
 function drawGrid() {
-  let userDrawing = false;
-  let userDrawingRGB = false;
-  let userDrawingShade = false;
-  let eraserMode = false;
   let gridElements = document.querySelectorAll(".grid");
 
-  document.addEventListener('mousedown', () => userDrawing = true);
-  document.addEventListener('mouseup', () => userDrawing = false);
+  document.addEventListener('mousedown', () => userDrawing = true); //If the userDrawing is true it will use mouseenter event.
+  document.addEventListener('mouseup', () => userDrawing = false); //If the userDrawing is false it will use click event.
 
   gridElements.forEach(item => {
-    item.style.setProperty('--darkness-level', 0);
-    item.addEventListener('mouseenter', () => {
+    item.style.setProperty('--darkness-level', 0); //For every element they will have a base of 0 darkness for unique values. The darkness trail wouldn't be the same to every divs.
+    item.addEventListener('mouseenter', () => { //Mouse Enter Event if True.
       let color = document.getElementById('color-picker').value;
     
       if (userDrawing == true) {
-        if (eraserMode) {
+        if (eraserMode) { //Eraser Mode
           item.style.backgroundColor = 'transparent';
-        } else if (userDrawingRGB == true) {
+        } else if (userDrawingRGB == true) { //RGB Mode
           let colorRed = Math.floor(Math.random() * 256);
           let colorBlue = Math.floor(Math.random() * 256);
           let colorGreen = Math.floor(Math.random() * 256);
           item.style.backgroundColor = 'rgb('+colorRed + ',' + colorBlue + ',' + colorGreen + ')';
-        } else if (userDrawingShade == true) {
-          let rgbValues = hexToRgb(color);
-          let darknessLevel = parseFloat(item.style.getPropertyValue('--darkness-level'));
-          let shadedColor = shadeColor(rgbValues, 10 * darknessLevel);
-          item.style.backgroundColor = 'rgb(' + shadedColor.join(',') + ')';
-          // Increment the darkness level for shading
-          darknessLevel += 0.50; // Adjust the increment value as needed
+        } else if (userDrawingShade == true) { //Shading Mode
+          let rgbValues = hexToRgb(color); //Conversion of HEX from the color-picker to RGB values
+          let darknessLevel = parseFloat(item.style.getPropertyValue('--darkness-level')); 
+          let shadedColor = shadeColor(rgbValues, 10 * darknessLevel); //This will decrement value for Red Green Blue until it reaches the value of 0. This will return the RGB values from the decrementation.
+          item.style.backgroundColor = 'rgb(' + shadedColor.join(',') + ')'; //This will remove the array brackets and the RGB would be able to utilize the value.
+          // Increment the darkness level for shading.
+          darknessLevel += 0.50; // Adjust the increment value as needed how fast the darkening effect would be.
           item.style.setProperty('--darkness-level', darknessLevel);
-        } else {
-          item.style.backgroundColor = color;
-        }
-      }
+        } else { //Color Mode
+          item.style.backgroundColor = color; //Color Mode
+        };
+      };
     });
 
-    item.addEventListener('click', () => {
+    item.addEventListener('click', () => { // Click Event if false.
       let color = document.getElementById('color-picker').value;
 
       if (!userDrawing) {
@@ -120,16 +132,19 @@ function drawGrid() {
           let darknessLevel = parseFloat(item.style.getPropertyValue('--darkness-level'));
           let shadedColor = shadeColor(rgbValues, 10 * darknessLevel);
           item.style.backgroundColor = 'rgb(' + shadedColor.join(',') + ')';
-          // Increment the darkness level for shading
-          darknessLevel += 0.50; // Adjust the increment value as needed
+          // Increment the darkness level for shading.
+          darknessLevel += 0.50; // Adjust the increment value as needed how fast the darkening effect would be.
           item.style.setProperty('--darkness-level', darknessLevel);
         } else {
           item.style.backgroundColor = color;
-        }
+        };
       };
     });
   });
+};
 
+//This will be responsible for activating the different modes and will add hover when use selected a button.
+function setupButtons() {
   let penBtn = document.getElementById('pen-button');
   let eraserBtn = document.getElementById('eraser-button');
   let shadeBtn = document.getElementById('blend-button');
@@ -146,7 +161,6 @@ function drawGrid() {
 
   penBtn.addEventListener('click', () => {
     removeHoverEffect([eraserBtn, shadeBtn, rgbBtn], 'hovered');
-    autoHover(penBtn);
     penBtn.classList.add('hovered');
     userDrawingShade = false;
     eraserMode = false;
@@ -173,10 +187,11 @@ function drawGrid() {
   
   clearBtn.addEventListener('click', () =>  {
     removeHoverEffect([penBtn, shadeBtn, eraserBtn, rgbBtn], 'hovered');
-    penBtn.classList.add('hovered');
+    autoHover(penBtn);
   });
-};
+}
 
+//This will refresh and remove the previous grid after the slider range has made a new value for createGrid().
 function clearGridItems() {
   let clrGridBtn = document.getElementById('clear-button');
   clrGridBtn.addEventListener('click', function(){
@@ -186,16 +201,29 @@ function clearGridItems() {
   });
 }
 
+//This will set the default hover whenever the user has clicked the clear button.
 function autoHover(button){
   button.classList.add('hovered');
   userDrawingShade = false;
   eraserMode = false;
   userDrawingRGB = false;
-}
+};
 
+//This initialization is responsible for grid that will set the default grid size and create the slider range.
+function initializeGrid(){
+  createGrid(DEFAULT_GRID_SIZE);
+  createSlider();
+};
+
+//This will be the overall initialization of the program.
+function initialize(){
+  initializeGrid();
+  setupButtons();
+};
+
+//When the user loads up the website the presets would be prepared.
 window.addEventListener('load', () => {
   let penBtn = document.getElementById('pen-button');
   autoHover(penBtn);
-  createGrid(16);
-  createSlider();
+  initialize();
 });
