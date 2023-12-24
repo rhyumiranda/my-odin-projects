@@ -188,11 +188,6 @@ input[type = "range"]::-webkit-slider-runnable-track{
     padding: 0;
     border: none;
     display: inline-block;
-    transition: background-color 0.2s ease;
-}
-
-.grid:hover {
-    background-color: rgb(217, 217, 217);
 }
 
 .hovered {
