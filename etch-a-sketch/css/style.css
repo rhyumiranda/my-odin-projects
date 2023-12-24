@@ -112,7 +112,7 @@ input[type = "range"]::-webkit-slider-runnable-track{
 #clear-button{
     padding: 8px;
     background-color: transparent;
-    border: 2px solid #406e8e;
+    border: 2px solid #8ea8c3;
     border-radius: 10px;
     font-size: 1rem;
     color: #8ea8c3;
