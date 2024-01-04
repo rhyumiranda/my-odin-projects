@@ -1,37 +1,53 @@
 # About this project
+
+<div align = "center">
 These are the projects I created from the foundations curriculum of The Odin Project (TOP).
+</div>
 
 <br>
-<h2 align ="center">
-  Odin-Recipes</h2>
-<a href = "https://rhyumiranda.github.io/my-odin-projects/odin-recipes/">
-  Check here!
-<a>
+<h3 align ="center">
+  Odin-Recipes
+</h3>
+
+<div align = "center">
+  <a href = "https://rhyumiranda.github.io/my-odin-projects/odin-recipes/">
+    Check here!
+  </a>
+</div>
 </br>
 
 <br>
-<h2 align ="center">
+<h3 align ="center">
   Project-Landing-Page
-</h2>
+</h3>
+
+<div align = "center">
 <a href = "https://rhyumiranda.github.io/my-odin-projects/project-landing-page/">
   Check here!
-<a>
+</a>
+</div>
 </br>
 
 <br>
-<h2 align ="center">
+<h3 align ="center">
   Rock-Paper-Scissors
-</h2>
+</h3>
+
+<div align = "center">
 <a href = "https://rhyumiranda.github.io/my-odin-projects/rock-paper-scissors/">
   Check here!
-<a>
+</a>
+</div>
 </br>
 
 <br>
-<h2 align ="center">
+<h3 align ="center">
   Etch-A-Sketch
-</h2>
+</h3>
+
+<div align = "center">
 <a href = "https://rhyumiranda.github.io/my-odin-projects/rock-paper-scissors/">
   Check here!
-<a>
+</a>
+</div>
 </br>
