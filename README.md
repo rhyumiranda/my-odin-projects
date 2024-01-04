@@ -46,7 +46,7 @@ These are the projects I created from the foundations curriculum of The Odin Pro
 </h3>
 
 <div align = "center">
-<a href = "https://rhyumiranda.github.io/my-odin-projects/rock-paper-scissors/">
+<a href = "https://rhyumiranda.github.io/my-odin-projects/etch-a-sketch/">
   Check here!
 </a>
 </div>
