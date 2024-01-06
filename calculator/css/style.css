@@ -4,6 +4,30 @@
   box-sizing: border-box;
 }
 
+.calculator{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: gray;
+  width: 70px;
+  height: 150px;
+}
+
+#primary-display, #secondary-display{
+  overflow: auto;
+  white-space: normal;
+  text-overflow: brebreak-word;
+}
+
+.display{
+  display: flex;
+  background-color: white;
+  width: 60px;
+  height: 45px;
+}
+
 /*==============
   Footer Section
   ==============*/
