@@ -1,16 +1,49 @@
+let digitButtons = document.querySelectorAll('.digit');
+let operandButtons = document.querySelectorAll('.operand');
+let primaryDisplay = document.getElementById('primary-display');
+let secondaryDisplay = document.getElementById('secondary-display');
 
-const add = (a, b) =>{
-  return alert(a + b);
+function userInput(){
+  digitButtons.forEach(el => {
+    el.addEventListener('click', () => {
+      primaryDisplay.textContent += el.textContent;
+    })
+  });
+
+  operandButtons.forEach(el => {
+    el.addEventListener('click', () => {
+      primaryDisplay.textContent += el.textContent;
+    })
+  });
 }
 
-const subtract = (a, b) =>{
-  return alert(a - b);
+function compute(){
+  const add = (a, b) =>{
+    return a + b;
+  }
+  
+  const subtract = (a, b) =>{
+    return a - b;
+  }
+  
+  const multiply = (a, b) =>{
+    return a * b;
+  }
+  
+  const divide = (a, b) =>{
+    return a / b;
+  }
 }
 
-const multiply = (a, b) =>{
-  return alert(a * b);
+function clearDisplay(){
+  primaryDisplay.textContent = '';
+  secondaryDisplay.textContent = '';
 }
 
-const divide = (a, b) =>{
-  return alert(a / b);
-}
+let clearBtn = document.getElementById('clear-button');
+
+clearBtn.addEventListener('click', () => {
+  clearDisplay();
+});
+
+userInput();
