@@ -4,6 +4,54 @@
   box-sizing: border-box;
 }
 
+/*==============
+  Container Section
+  ==============*/
+
+#phone{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: auto;
+  width: 300px;
+  height: 567px;
+  background-color: black;
+  border-radius: 35px;
+}
+
+#brove{
+  width: 175px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 20px 20px;
+  background-color: black;
+}
+
+#speaker{
+  width: 90px;
+  height: 5px;
+  background-color: #656565;
+  display: block;
+  margin: auto;
+  margin-top: 8px;
+  border-radius: 20px;
+}
+
+#phone-screen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 285px;
+  height: 555px;
+  background-color: rgb(1, 23, 42);
+  border-radius: 30px;
+
+}
+  
 .calculator{
   display: flex;
   flex-direction: column;
@@ -15,17 +63,42 @@
   height: 150px;
 }
 
-#primary-display, #secondary-display{
-  overflow: auto;
-  white-space: normal;
-  text-overflow: brebreak-word;
-}
+/*==============
+  Display Section
+  ==============*/
 
 .display{
   display: flex;
   background-color: white;
   width: 60px;
   height: 45px;
+} 
+
+#primary-display{
+  width: 200px; /* Adjust the width to your preference */
+  border: 1px solid #ccc;
+  overflow: auto; /* or scroll, hidden, etc. based on your preference */
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/*==============
+  Button Section
+  ==============*/
+
+.btn{
+  width: 65px;
+  height: 65px;
+  border-radius: 50px;
+  border: none;
+
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+}
+
+#zero-row-span{
+  width: 135px;
+  height: 65px;
 }
 
 /*==============
