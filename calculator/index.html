@@ -8,48 +8,50 @@
     <script src="./js/script.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>Calculator</h1>
-    </header>
     <main>
-      <div class="calculator">
-        <div class="display">
-          <div id="secondary-display">999999999</div>
-          <div id="primary-display">88888888</div>
-        </div>
+      <div id="phone">
+        <div id="brove"><span id="speaker"></span></div>
+        <div id="phone-screen">
+          <div id="calculator">
+            <div class="display">
+              <div id="secondary-display">999999999</div>
+              <div id="primary-display">88888888</div>
+            </div>
+            <div id="button-container">
+              <div class="button-row-one">
+                <button class="btn utility" id="clear-button">AC</button>
+                <button class="btn utility" id="sign-toggle">+/-</button>
+                <button class="btn utility" id="percentage-toggle">%</button>
+                <button class="btn operand">/</button>
+              </div>
 
-        <div id="button-container">
-          <div class="button-row-one">
-            <button class="btn" id="clear-button">AC</button>
-            <button class="btn" id="delete-button">Del</button>
-            <button class="operand">/</button>
-          </div>
+              <div id="button-row-two">
+                <button class="btn digit">7</button>
+                <button class="btn digit">8</button>
+                <button class="btn digit">9</button>
+                <button class="btn operand">x</button>
+              </div>
 
-          <div id="button-row-two">
-            <button class="digit">7</button>
-            <button class="digit">8</button>
-            <button class="digit">9</button>
-            <button class="operand">x</button>
-          </div>
+              <div id="button-row-three">
+                <button class="btn digit">4</button>
+                <button class="btn digit">5</button>
+                <button class="btn digit">6</button>
+                <button class="btn operand">-</button>
+              </div>
 
-          <div id="button-row-three">
-            <button class="digit">4</button>
-            <button class="digit">5</button>
-            <button class="digit">6</button>
-            <button class="operand">-</button>
-          </div>
+              <div id="button-row-four">
+                <button class="btn digit">1</button>
+                <button class="btn digit">2</button>
+                <button class="btn digit">3</button>
+                <button class="btn operand">+</button>
+              </div>
 
-          <div id="button-row-four">
-            <button class="digit">1</button>
-            <button class="digit">2</button>
-            <button class="digit">3</button>
-            <button class="operand">+</button>
-          </div>
-
-          <div id="button-row-five">
-            <button class="digit">0</button>
-            <button class="digit">.</button>
-            <button class="btn" id="equal-button">=</button>
+              <div id="button-row-five">
+                <button class="btn digit" id="zero-row-span">0</button>
+                <button class="btn digit">.</button>
+                <button class="btn" id="equal-button">=</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
