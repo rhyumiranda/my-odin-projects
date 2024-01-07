@@ -17,7 +17,10 @@ function userInput(){
   });
 }
 
-function compute(){
+function solve(a, b){
+
+  
+
   const add = (a, b) =>{
     return a + b;
   }
