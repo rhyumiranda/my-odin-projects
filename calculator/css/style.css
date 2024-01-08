@@ -31,7 +31,7 @@
   background-color: black;
 }
 
-#speaker{
+#speaker, #dock{
   width: 90px;
   height: 5px;
   background-color: #656565;
@@ -39,6 +39,16 @@
   margin: auto;
   margin-top: 8px;
   border-radius: 20px;
+}
+
+#dock{
+  background-color: rgb(225, 225, 225);
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
 }
 
 #phone-screen{
@@ -49,7 +59,13 @@
   height: 555px;
   background-color: rgb(1, 23, 42);
   border-radius: 30px;
-
+}
+#button-container{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid firebrick;
+  gap: 12px;
+  
 }
   
 .calculator{
@@ -87,8 +103,8 @@
   ==============*/
 
 .btn{
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
   border-radius: 50px;
   border: none;
 
@@ -97,8 +113,8 @@
 }
 
 #zero-row-span{
-  width: 135px;
-  height: 65px;
+  width: 125px;
+  height: 60px;
 }
 
 /*==============
