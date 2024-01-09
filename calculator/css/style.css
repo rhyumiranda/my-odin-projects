@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,21 +8,23 @@
   Container Section
   ==============*/
 
-#phone{
+#phone {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  top: -50%;
+  transform: translateY(20%);
   margin: auto;
-  width: 300px;
-  height: 567px;
+  width: 281.25px;
+  height: 609px;
   background-color: black;
-  border-radius: 35px;
+  border-radius: 60px;
 }
 
-#brove{
-  width: 175px;
-  height: 25px;
+#brove {
+  width: 145px;
+  height: 30px;
   position: absolute;
   top: 0;
   left: 50%;
@@ -31,44 +33,50 @@
   background-color: black;
 }
 
-#speaker, #dock{
-  width: 90px;
+#speaker,
+#dock {
+  width: 45px;
   height: 5px;
-  background-color: #656565;
+  background-color: #222222;
   display: block;
   margin: auto;
-  margin-top: 8px;
+  margin-top: 10px;
   border-radius: 20px;
 }
 
-#dock{
+#dock {
   background-color: rgb(225, 225, 225);
   display: flex;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  width: 110px;
 }
 
-#phone-screen{
+#phone-screen {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 285px;
-  height: 555px;
-  background-color: rgb(1, 23, 42);
-  border-radius: 30px;
+  width: 270px;
+  height: 595px;
+  background-color: rgb(22, 22, 22);
+  border-radius: 50px;
 }
-#button-container{
+
+#button-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid firebrick;
   gap: 12px;
-  
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 50px;
 }
-  
-.calculator{
+
+.calculator {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,17 +91,21 @@
   Display Section
   ==============*/
 
-.display{
+.display {
   display: flex;
-  background-color: white;
-  width: 60px;
-  height: 45px;
-} 
+  position: absolute;
+  top: 110px;
+  right: 15px;
+  transform: translateY(100%);
+}
 
-#primary-display{
-  width: 200px; /* Adjust the width to your preference */
-  border: 1px solid #ccc;
-  overflow: auto; /* or scroll, hidden, etc. based on your preference */
+#primary-display {
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: right;
+  color: #fffefe;
+  width: 255px;
+  overflow: auto;
   white-space: normal;
   word-wrap: break-word;
 }
@@ -102,26 +114,59 @@
   Button Section
   ==============*/
 
-.btn{
-  width: 60px;
-  height: 60px;
+.btn {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 55px;
+  height: 55px;
   border-radius: 50px;
+  font-size: 25px;
   border: none;
 
   -webkit-appearance: none;
   -webkit-user-select: none;
 }
 
-#zero-row-span{
-  width: 125px;
-  height: 60px;
+#zero-row-span {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 122px;
+  height: 55px;
 }
+
+#button-row-one,
+#button-row-two,
+#button-row-three,
+#button-row-four,
+#button-row-five{
+  display: flex;
+  gap: 12px;
+}
+
+.utility{
+  background-color: #a4a5a4;
+  color: black;
+}
+
+.digit{
+  background-color: #323233;
+  color: #fffefe;
+}
+
+.operand,
+#equal-button {
+  background-color: #fe9901;
+  color: #fffefe;
+  font-size: 30px;
+}
+
+
 
 /*==============
   Footer Section
   ==============*/
 
-footer{
+footer {
   position: fixed;
   height: auto;
   width: 100vw;
