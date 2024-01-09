@@ -1,52 +1,87 @@
-let digitButtons = document.querySelectorAll('.digit');
-let operandButtons = document.querySelectorAll('.operand');
-let primaryDisplay = document.getElementById('primary-display');
-let secondaryDisplay = document.getElementById('secondary-display');
 
-function userInput(){
-  digitButtons.forEach(el => {
-    el.addEventListener('click', () => {
-      primaryDisplay.textContent += el.textContent;
-    })
-  });
+let primaryDisplay = document.getElementById("primary-display");
+let currentValue = '';
+let previousValue = '';
 
-  operandButtons.forEach(el => {
-    el.addEventListener('click', () => {
-      primaryDisplay.textContent += el.textContent;
-    })
-  });
+let numberOne = 0;
+let numberTwo = 0;
+
+let operator = '';
+let result = '';
+let isOperatorActive = false;
+
+
+function appendNumber(number) {
+  if (isOperatorActive) {
+    previousValue = currentValue;
+    currentValue = String(number);
+    numberTwo = parseFloat(currentValue);
+    isOperatorActive = false;
+    updateDisplay(currentValue);
+  } else {
+    currentValue += String(number);
+    numberOne = parseFloat(currentValue);
+    updateDisplay(currentValue);
+  }
+
+  calculate(numberOne, numberTwo);
 }
 
-function solve(a, b){
-
-  
-
-  const add = (a, b) =>{
-    return a + b;
-  }
-  
-  const subtract = (a, b) =>{
-    return a - b;
-  }
-  
-  const multiply = (a, b) =>{
-    return a * b;
-  }
-  
-  const divide = (a, b) =>{
-    return a / b;
-  }
+function setOperator(op){
+  isOperatorActive = true;
+  operator = op;
 }
 
-function clearDisplay(){
-  primaryDisplay.textContent = '';
-  secondaryDisplay.textContent = '';
+function updateDisplay(val){
+  primaryDisplay.textContent = val;
 }
 
-let clearBtn = document.getElementById('clear-button');
+function clearDisplay() {
+  primaryDisplay.textContent = "0";
+  operator = '';
+  currentValue = '';
+  previousValue = '';
+  numberOne = 0;
+  numberTwo = 0;
+  result = 0;
+}
 
-clearBtn.addEventListener('click', () => {
-  clearDisplay();
-});
+function calculate(numOne, numTwo){
 
-userInput();
+  switch(operator){
+    case '+':
+      result = numOne + numTwo;
+      break;
+
+    case '-':
+      result = numOne - numTwo;
+      break;
+    
+    case '*':
+      result = numOne * numTwo;
+      break;
+    
+    case '/':
+      if(numTwo !== 0){
+        result = numOne / numTwo;
+      } else {
+        result = 'Syntax Error!';
+      }
+      break;
+    }
+
+    console.log("==============================")
+    console.log("Number One: " + numberOne);
+    console.log("Number Two: " + numberTwo);
+    console.log("------------------------------")
+    console.log("currentValue: " + currentValue);
+    console.log("previousValue: " + previousValue);
+    console.log("==============================")
+}
+
+function printResult(){
+  primaryDisplay.textContent = result;
+
+}
+
+
