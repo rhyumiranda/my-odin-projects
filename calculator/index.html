@@ -14,44 +14,56 @@
         <div id="phone-screen">
           <div id="calculator">
             <div class="display">
-              <div id="secondary-display">999999999</div>
-              <div id="primary-display">88888888</div>
+              <div id="primary-display">0</div>
             </div>
             <div id="button-container">
-              <div class="button-row-one">
-                <button class="btn utility" id="clear-button">AC</button>
+              <div id="button-row-one">
+                <button
+                  class="btn utility"
+                  id="clear-button"
+                  onclick="clearDisplay()"
+                >
+                  AC
+                </button>
                 <button class="btn utility" id="sign-toggle">+/-</button>
                 <button class="btn utility" id="percentage-toggle">%</button>
-                <button class="btn operand">/</button>
+                <button class="btn operand" onclick="setOperator('/')">/</button>
               </div>
 
               <div id="button-row-two">
-                <button class="btn digit">7</button>
-                <button class="btn digit">8</button>
-                <button class="btn digit">9</button>
-                <button class="btn operand">x</button>
+                <button class="btn digit" onclick="appendNumber(7)">7</button>
+                <button class="btn digit" onclick="appendNumber(8)">8</button>
+                <button class="btn digit" onclick="appendNumber(9)">9</button>
+                <button class="btn operand" onclick="setOperator('*')">x</button>
               </div>
 
               <div id="button-row-three">
-                <button class="btn digit">4</button>
-                <button class="btn digit">5</button>
-                <button class="btn digit">6</button>
-                <button class="btn operand">-</button>
+                <button class="btn digit" onclick="appendNumber(4)">4</button>
+                <button class="btn digit" onclick="appendNumber(5)">5</button>
+                <button class="btn digit" onclick="appendNumber(6)">6</button>
+                <button class="btn operand" onclick="setOperator('-')">-</button>
               </div>
 
               <div id="button-row-four">
-                <button class="btn digit">1</button>
-                <button class="btn digit">2</button>
-                <button class="btn digit">3</button>
-                <button class="btn operand">+</button>
+                <button class="btn digit" onclick="appendNumber(1)">1</button>
+                <button class="btn digit" onclick="appendNumber(2)">2</button>
+                <button class="btn digit" onclick="appendNumber(3)">3</button>
+                <button class="btn operand" onclick="setOperator('+')">+</button>
               </div>
 
               <div id="button-row-five">
-                <button class="btn digit" id="zero-row-span">0</button>
+                <button
+                  class="btn digit"
+                  id="zero-row-span"
+                  onclick="appendNumber(0)"
+                >
+                  0
+                </button>
                 <button class="btn digit">.</button>
-                <button class="btn" id="equal-button">=</button>
+                <button class="btn" id="equal-button" onclick="printResult()">=</button>
               </div>
             </div>
+            <span id="dock"></span>
           </div>
         </div>
       </div>
