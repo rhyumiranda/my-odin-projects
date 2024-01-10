@@ -1,21 +1,21 @@
-
 let primaryDisplay = document.getElementById("primary-display");
-let currentValue = '';
-let previousValue = '';
+
+let currentValue = "";
+let previousValue = "";
 
 let numberOne = 0;
 let numberTwo = 0;
 
-let operator = '';
-let result = '';
-let isOperatorActive = false;
+let operator = "";
+let result = "";
 
+let isOperatorActive = false;
 
 function appendNumber(number) {
   if (isOperatorActive) {
     previousValue = currentValue;
     currentValue = String(number);
-    numberTwo = parseFloat(currentValue);
+    numberTwo = parseFloat(previousValue);
     isOperatorActive = false;
     updateDisplay(currentValue);
   } else {
@@ -27,61 +27,57 @@ function appendNumber(number) {
   calculate(numberOne, numberTwo);
 }
 
-function setOperator(op){
+function setOperator(op) {
   isOperatorActive = true;
   operator = op;
 }
 
-function updateDisplay(val){
+function updateDisplay(val) {
   primaryDisplay.textContent = val;
 }
 
 function clearDisplay() {
   primaryDisplay.textContent = "0";
-  operator = '';
-  currentValue = '';
-  previousValue = '';
+  operator = "";
+  currentValue = "";
+  previousValue = "";
   numberOne = 0;
   numberTwo = 0;
   result = 0;
 }
 
-function calculate(numOne, numTwo){
-
-  switch(operator){
-    case '+':
+function calculate(numOne, numTwo) {
+  switch (operator) {
+    case "+":
       result = numOne + numTwo;
       break;
 
-    case '-':
+    case "-":
       result = numOne - numTwo;
       break;
-    
-    case '*':
+
+    case "*":
       result = numOne * numTwo;
       break;
-    
-    case '/':
-      if(numTwo !== 0){
+
+    case "/":
+      if (numTwo !== 0) {
         result = numOne / numTwo;
       } else {
-        result = 'Syntax Error!';
+        result = "Syntax Error!";
       }
       break;
-    }
+  }
 
-    console.log("==============================")
-    console.log("Number One: " + numberOne);
-    console.log("Number Two: " + numberTwo);
-    console.log("------------------------------")
-    console.log("currentValue: " + currentValue);
-    console.log("previousValue: " + previousValue);
-    console.log("==============================")
+  console.log("==============================");
+  console.log("Number One: " + numberOne);
+  console.log("Number Two: " + numberTwo);
+  console.log("------------------------------");
+  console.log("currentValue: " + currentValue);
+  console.log("previousValue: " + previousValue);
+  console.log("==============================");
 }
 
-function printResult(){
+function printResult() {
   primaryDisplay.textContent = result;
-
 }
-
-
