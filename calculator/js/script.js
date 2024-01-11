@@ -3,9 +3,6 @@ let primaryDisplay = document.getElementById("primary-display");
 let currentValue = "";
 let previousValue = "";
 
-let numberOne = 0;
-let numberTwo = 0;
-
 let operator = "";
 let result = "";
 
@@ -13,18 +10,26 @@ let isOperatorActive = false;
 
 function appendNumber(number) {
   if (isOperatorActive) {
-    previousValue = currentValue;
+    if (previousValue === "0" || previousValue === "") {
+      if (result === 0) {
+        previousValue = currentValue;
+      } else if (result > 0) {
+        previousValue = result;
+      }
+    }
     currentValue = String(number);
-    numberTwo = parseFloat(previousValue);
     isOperatorActive = false;
     updateDisplay(currentValue);
   } else {
     currentValue += String(number);
-    numberOne = parseFloat(currentValue);
     updateDisplay(currentValue);
   }
 
-  calculate(numberOne, numberTwo);
+  calculate(parseFloat(previousValue), parseFloat(currentValue));
+  console.log("===================");
+  console.log("currentValue: " + currentValue);
+  console.log("previousValue: " + previousValue);
+  console.log("===================");
 }
 
 function setOperator(op) {
@@ -69,15 +74,18 @@ function calculate(numOne, numTwo) {
       break;
   }
 
-  console.log("==============================");
-  console.log("Number One: " + numberOne);
-  console.log("Number Two: " + numberTwo);
-  console.log("------------------------------");
+  console.log("===================");
   console.log("currentValue: " + currentValue);
   console.log("previousValue: " + previousValue);
-  console.log("==============================");
+  console.log("===================");
 }
 
 function printResult() {
   primaryDisplay.textContent = result;
+  previousValue = result;
+  currentValue = "";
+  console.log("===================");
+  console.log("currentValue: " + currentValue);
+  console.log("previousValue: " + previousValue);
+  console.log("===================");
 }
