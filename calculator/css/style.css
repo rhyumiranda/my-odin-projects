@@ -110,6 +110,22 @@
   word-wrap: break-word;
 }
 
+#second-display {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: right;
+  position: absolute;
+  top: -20px;
+  left: 253px;
+  transform: translateY(100%);
+  transform: translateX(-100%);
+  color: #5c5c5c;
+  width: 255px;
+  overflow: auto;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 /*==============
   Button Section
   ==============*/
