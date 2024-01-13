@@ -46,8 +46,7 @@ function clearDisplay() {
   operator = "";
   currentValue = "";
   previousValue = "";
-  numberOne = 0;
-  numberTwo = 0;
+  operator = "";
   result = 0;
 }
 
@@ -81,9 +80,14 @@ function calculate(numOne, numTwo) {
 }
 
 function printResult() {
-  primaryDisplay.textContent = result;
-  previousValue = result;
-  currentValue = "";
+  if(operator === "+" || operator === "-" || operator === "*" || operator === "/" ){
+    primaryDisplay.textContent = result;
+    previousValue = result;
+    currentValue = "";
+  } else {
+    primaryDisplay.textContent = result;
+  }
+  
   console.log("===================");
   console.log("currentValue: " + currentValue);
   console.log("previousValue: " + previousValue);
