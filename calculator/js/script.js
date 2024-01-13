@@ -1,4 +1,5 @@
 let primaryDisplay = document.getElementById("primary-display");
+let secondaryDisplay = document.getElementById("second-display");
 
 let currentValue = "";
 let previousValue = "";
@@ -19,10 +20,10 @@ function appendNumber(number) {
     }
     currentValue = String(number);
     isOperatorActive = false;
-    updateDisplay(currentValue);
+    updateDisplay();
   } else {
     currentValue += String(number);
-    updateDisplay(currentValue);
+    updateDisplay();
   }
 
   calculate(parseFloat(previousValue), parseFloat(currentValue));
@@ -37,12 +38,22 @@ function setOperator(op) {
   operator = op;
 }
 
-function updateDisplay(val) {
-  primaryDisplay.textContent = val;
+function updateDisplay() {
+  primaryDisplay.textContent = currentValue;
+
+  if(operator === "*"){
+    secondaryDisplay.textContent = `${previousValue} × `;
+  } else if(operator === "/"){
+    secondaryDisplay.textContent = `${previousValue} ÷ `;
+  } else {
+    secondaryDisplay.textContent = `${previousValue} ${operator} `;
+  }
+  
 }
 
 function clearDisplay() {
   primaryDisplay.textContent = "0";
+  secondaryDisplay.textContent = '';
   operator = "";
   currentValue = "";
   previousValue = "";
@@ -68,7 +79,7 @@ function calculate(numOne, numTwo) {
       if (numTwo !== 0) {
         result = numOne / numTwo;
       } else {
-        result = "Syntax Error!";
+        result = "Error!";
       }
       break;
   }
@@ -82,6 +93,7 @@ function calculate(numOne, numTwo) {
 function printResult() {
   if(operator === "+" || operator === "-" || operator === "*" || operator === "/" ){
     primaryDisplay.textContent = result;
+    secondaryDisplay.textContent += `${currentValue}`;
     previousValue = result;
     currentValue = "";
   } else {
