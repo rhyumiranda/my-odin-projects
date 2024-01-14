@@ -137,9 +137,23 @@
   border-radius: 50px;
   font-size: 25px;
   border: none;
+  transition: background-color 0.3s ease;
 
   -webkit-appearance: none;
   -webkit-user-select: none;
+}
+
+.digit:hover {
+  background-color: #737272;
+}
+
+.operand:hover,
+#equal-button:hover {
+  background-color: #fac489;
+}
+
+.utility:hover {
+  background-color: #d8d8d8;
 }
 
 #zero-row-span {
@@ -169,14 +183,27 @@
   color: #fffefe;
 }
 
-.operand,
+.operand{
+  background-color: #fe9901;
+  color: #fffefe;
+  font-size: 30px;
+}
+
 #equal-button {
   background-color: #fe9901;
   color: #fffefe;
   font-size: 30px;
 }
 
-
+#addition.hovered,
+#subtraction.hovered,
+#multiplication.hovered,
+#division.hovered{
+  background-color: #ffffff;
+  color: #fe9e0a;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
 
 /*==============
   Footer Section
