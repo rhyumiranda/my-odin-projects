@@ -15,7 +15,6 @@ let operator = "";
 let result = 0;
 
 let isOperatorActive = false;
-let isOperatorRepeat = false;
 let operationCount = 0;
 let removeHover;
 
@@ -34,31 +33,37 @@ function appendNumber(number) {
     updateDisplay();
     resetOperatorHover()
   } else {
-    isOperatorRepeat = false;
     currentValue += String(number);
     updateDisplay();
     resetOperatorHover()
   }
 
   calculate(parseFloat(previousValue), parseFloat(currentValue));
-  console.log("===================");
-  console.log("currentValue: " + currentValue);
-  console.log("previousValue: " + previousValue);
-  console.log("===================");
+  logValues()
 }
 
 function setOperator(op) {
-  isOperatorActive = true;
-  
-  removeHover = false;
-  operator = op;
+  if (!isOperatorActive) {
+    // If it's a new operation, set the operator and update the secondary display
+    isOperatorActive = true;
+    operator = op;
 
-  operationCount++;
-  if(operationCount > 1){
-    isOperatorRepeat = true;
+    operationCount++;
+
+    if (operationCount >= 2) {
+      // Only update previousValue if there was a repeated operation
+      primaryDisplay.textContent = result;
+      previousValue = result;
+    }
+    
+    setupHoverButton(operator);
+    updateDisplay();
+  } else {
+    // If it's a repeated operator, update the operator and secondary display
+    operator = op;
+    setupHoverButton(operator);
+    updateDisplay();
   }
-
-  setupHoverButton(operator);
 }
 
 function updateDisplay() {
@@ -83,7 +88,6 @@ function clearDisplay() {
   operator = "";
   result = 0;
   operationCount = 0;
-  isOperatorRepeat = false;
 
   resetOperatorHover();
 }
@@ -112,17 +116,13 @@ function calculate(numOne, numTwo) {
       break;
   }
 
-  if(isOperatorRepeat){
+  if(operationCount > 1){
     primaryDisplay.textContent = result;
     secondaryDisplay.textContent += `${currentValue}`;
     previousValue = result;
-    currentValue = "";
   }
 
-  console.log("===================");
-  console.log("currentValue: " + currentValue);
-  console.log("previousValue: " + previousValue);
-  console.log("===================");
+  logValues()
 }
 
 function printResult() {
@@ -137,12 +137,10 @@ function printResult() {
     primaryDisplay.textContent = currentValue;
     operationCount = 0;
   }
-  
-  console.log("===================");
-  console.log("currentValue: " + currentValue);
-  console.log("previousValue: " + previousValue);
-  console.log("===================");
+  logValues()
 }
+
+//==================================================================================================================
 
 function removeHoverEffect(buttons, classList){
   buttons.forEach((button) =>{
@@ -180,8 +178,10 @@ function resetOperatorHover(){
   setupHoverButton();
 }
 
-function initialize(){
-  setupHoverButton();
+function logValues(){
+  console.log("===================");
+  console.log("currentValue: " + currentValue);
+  console.log("previousValue: " + previousValue);
+  console.log("result: " + result);
+  console.log("===================");
 }
-
-initialize();
