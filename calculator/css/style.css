@@ -141,6 +141,7 @@
 
   -webkit-appearance: none;
   -webkit-user-select: none;
+  cursor: pointer;
 }
 
 .digit:hover {
@@ -202,7 +203,6 @@
   background-color: #ffffff;
   color: #fe9e0a;
   transition: background-color 0.3s ease;
-  cursor: pointer;
 }
 
 /*==============
