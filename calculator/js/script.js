@@ -15,6 +15,7 @@ let operator = "";
 let result = 0;
 
 let isOperatorActive = false;
+let isOperatorRepeat = false;
 let operationCount = 0;
 let removeHover;
 
@@ -33,6 +34,7 @@ function appendNumber(number) {
     updateDisplay();
     resetOperatorHover()
   } else {
+    isOperatorRepeat = false;
     currentValue += String(number);
     updateDisplay();
     resetOperatorHover()
@@ -43,27 +45,18 @@ function appendNumber(number) {
 }
 
 function setOperator(op) {
-  if (!isOperatorActive) {
-    // If it's a new operation, set the operator and update the secondary display
-    isOperatorActive = true;
-    operator = op;
+  isOperatorActive = true;
+  
+  removeHover = false;
+  operator = op;
 
-    operationCount++;
+  operationCount++;
 
-    if (operationCount >= 2) {
-      // Only update previousValue if there was a repeated operation
-      primaryDisplay.textContent = result;
-      previousValue = result;
-    }
-    
-    setupHoverButton(operator);
-    updateDisplay();
-  } else {
-    // If it's a repeated operator, update the operator and secondary display
-    operator = op;
-    setupHoverButton(operator);
-    updateDisplay();
+  if(operationCount >= 2){
+    primaryDisplay.textContent = result;
+    previousValue = result;
   }
+  setupHoverButton(operator);
 }
 
 function updateDisplay() {
@@ -88,6 +81,7 @@ function clearDisplay() {
   operator = "";
   result = 0;
   operationCount = 0;
+  isOperatorRepeat = false;
 
   resetOperatorHover();
 }
@@ -116,7 +110,8 @@ function calculate(numOne, numTwo) {
       break;
   }
 
-  if(operationCount > 1){
+  if(operationCount === 1){
+    isOperatorRepeat = true;
     primaryDisplay.textContent = result;
     secondaryDisplay.textContent += `${currentValue}`;
     previousValue = result;
