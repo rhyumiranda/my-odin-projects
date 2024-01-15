@@ -1,10 +1,8 @@
 // 1. Add keyboard listeners for operator and digit
-// 2. Make the decimal work
-// 3. Fix the negative first then positive number sum
-// 4. Add clear button inside the All Clear or Clear? Add incrementation if the value is one just clear, If the value of the variable is 2 fully clear. If there is a number change value of button into C, if there isn't default to AC. Add a reset on all clear and equal.
-// 5. Add a script for changing the sign
-// 5. Add a hover when it comes to operators
-// 6. Add more realism on the phone container power button etc.
+// 2. Fix the negative first then positive number sum
+// 3. Add clear button inside the All Clear or Clear? Add incrementation if the value is one just clear, If the value of the variable is 2 fully clear. If there is a number change value of button into C, if there isn't default to AC. Add a reset on all clear and equal.
+// 4. Add a script for changing the sign
+// 5. Add more realism on the phone container power button etc.
 
 
 let primaryDisplay = document.getElementById("primary-display");
@@ -17,6 +15,8 @@ let operator = "";
 let result = 0;
 
 let isOperatorActive = false;
+let isOperatorRepeat = false;
+let operationCount = 0;
 let removeHover;
 
 function appendNumber(number) {
@@ -28,14 +28,14 @@ function appendNumber(number) {
         previousValue = result;
       }
     }
+
     currentValue = String(number);
     isOperatorActive = false;
-
     updateDisplay();
     resetOperatorHover()
   } else {
+    isOperatorRepeat = false;
     currentValue += String(number);
-
     updateDisplay();
     resetOperatorHover()
   }
@@ -49,8 +49,14 @@ function appendNumber(number) {
 
 function setOperator(op) {
   isOperatorActive = true;
+  
   removeHover = false;
   operator = op;
+
+  operationCount++;
+  if(operationCount > 1){
+    isOperatorRepeat = true;
+  }
 
   setupHoverButton(operator);
 }
@@ -76,9 +82,10 @@ function clearDisplay() {
   previousValue = "";
   operator = "";
   result = 0;
+  operationCount = 0;
+  isOperatorRepeat = false;
 
-  removeHover = true;
-  setupHoverButton();
+  resetOperatorHover();
 }
 
 function calculate(numOne, numTwo) {
@@ -105,6 +112,13 @@ function calculate(numOne, numTwo) {
       break;
   }
 
+  if(isOperatorRepeat){
+    primaryDisplay.textContent = result;
+    secondaryDisplay.textContent += `${currentValue}`;
+    previousValue = result;
+    currentValue = "";
+  }
+
   console.log("===================");
   console.log("currentValue: " + currentValue);
   console.log("previousValue: " + previousValue);
@@ -117,10 +131,11 @@ function printResult() {
     secondaryDisplay.textContent += `${currentValue}`;
     previousValue = result;
     currentValue = "";
-    removeHover = true;
-    setupHoverButton();
+    operationCount = 0;
+    resetOperatorHover();
   } else {
-    primaryDisplay.textContent = result;
+    primaryDisplay.textContent = currentValue;
+    operationCount = 0;
   }
   
   console.log("===================");
@@ -168,3 +183,5 @@ function resetOperatorHover(){
 function initialize(){
   setupHoverButton();
 }
+
+initialize();
