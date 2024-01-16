@@ -1,13 +1,5 @@
-// 1. Add keyboard listeners for operator and digit
-// 2. Fix the negative first then positive number sum
-// 3. Add clear button inside the All Clear or Clear? Add incrementation if the value is one just clear, If the value of the variable is 2 fully clear. If there is a number change value of button into C, if there isn't default to AC. Add a reset on all clear and equal.
-// 4. Add a script for changing the sign
-// 5. Add more realism on the phone container power button etc.
-
-
 let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
-
 let currentValue = "";
 let previousValue = "";
 
@@ -69,6 +61,22 @@ function updateDisplay() {
   }
 }
 
+function clearDisplay() {
+  primaryDisplay.textContent = "0";
+  secondaryDisplay.textContent = '';
+  operator = "";
+  currentValue = "";
+  previousValue = "";
+  operator = "";
+  result = 0;
+  operationCount = 0;
+
+  isNewOperation = true;
+  isOperatorActive = false;
+
+  resetOperatorHover();
+}
+
 function calculate(numOne, numTwo) {
   switch (operator) {
     case "+":
@@ -95,16 +103,15 @@ function calculate(numOne, numTwo) {
 }
 
 function printResult() {
-  if (operator === "+" || operator === "-" || operator === "*" || operator === "/") {
+  if (operationCount > 0) {
+    calculate(parseFloat(previousValue), parseFloat(currentValue));
     primaryDisplay.textContent = currentResult;
     secondaryDisplay.textContent += `${currentValue}`;
     isNewOperation = true; // Set isNewOperation to true after completing an operation
     currentValue = "";
-    operationCount = 0;
-    resetOperatorHover();
   } else {
-    primaryDisplay.textContent = currentValue;
-    operationCount = 0;
+    // If there was no operation, simply display the current value
+    primaryDisplay.textContent = parseFloat(currentValue);
   }
   logValues();
 }
@@ -151,6 +158,6 @@ function logValues(){
   console.log("===================");
   console.log("currentValue: " + currentValue);
   console.log("previousValue: " + previousValue);
-  console.log("result: " + result);
+  console.log("result: " + currentResult);
   console.log("===================");
 }
