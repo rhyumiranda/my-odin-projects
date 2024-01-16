@@ -15,116 +15,90 @@ let operator = "";
 let result = 0;
 
 let isOperatorActive = false;
-let isOperatorRepeat = false;
 let operationCount = 0;
 let removeHover;
 
+let isNewOperation = true;
+let currentResult = 0; // Store the current result
+
 function appendNumber(number) {
   if (isOperatorActive) {
-    if (previousValue === "0" || previousValue === "") {
-      if (result === 0) {
-        previousValue = currentValue;
-      } else if (result > 0) {
-        previousValue = result;
-      }
+    if (isNewOperation) {
+      previousValue = parseFloat(currentValue); // Set previousValue based on currentResult
+      isNewOperation = false;
     }
 
     currentValue = String(number);
     isOperatorActive = false;
-    updateDisplay();
-    resetOperatorHover()
   } else {
-    isOperatorRepeat = false;
     currentValue += String(number);
-    updateDisplay();
-    resetOperatorHover()
   }
 
-  calculate(parseFloat(previousValue), parseFloat(currentValue));
-  logValues()
+  updateDisplay();
+  resetOperatorHover();
+  logValues();
 }
 
 function setOperator(op) {
   isOperatorActive = true;
-  
   removeHover = false;
   operator = op;
 
-  operationCount++;
-
-  if(operationCount >= 2){
-    primaryDisplay.textContent = result;
-    previousValue = result;
+  if (!isNewOperation) {
+    calculate(parseFloat(previousValue), parseFloat(currentValue)); // Calculate previous operation
+    previousValue = currentResult; // Set previousValue based on the current result
+  } else {
+    previousValue = parseFloat(currentValue); // Set previousValue based on the current value if it's a new operation
+    isNewOperation = false;
   }
+
+  operationCount++;
   setupHoverButton(operator);
 }
+
 
 function updateDisplay() {
   primaryDisplay.textContent = currentValue;
 
-  if(operator === "*"){
+  if (operator === "*") {
     secondaryDisplay.textContent = `${previousValue} × `;
-  } else if(operator === "/"){
+  } else if (operator === "/") {
     secondaryDisplay.textContent = `${previousValue} ÷ `;
   } else {
     secondaryDisplay.textContent = `${previousValue} ${operator} `;
   }
-  
-}
-
-function clearDisplay() {
-  primaryDisplay.textContent = "0";
-  secondaryDisplay.textContent = '';
-  operator = "";
-  currentValue = "";
-  previousValue = "";
-  operator = "";
-  result = 0;
-  operationCount = 0;
-  isOperatorRepeat = false;
-
-  resetOperatorHover();
 }
 
 function calculate(numOne, numTwo) {
-
   switch (operator) {
     case "+":
-      result = numOne + numTwo;
+      currentResult = numOne + numTwo;
       break;
-
     case "-":
-      result = numOne - numTwo;
+      currentResult = numOne - numTwo;
       break;
-
     case "*":
-      result = numOne * numTwo;
+      currentResult = numOne * numTwo;
       break;
-
     case "/":
       if (numTwo !== 0) {
-        result = numOne / numTwo;
+        currentResult = numOne / numTwo;
       } else {
-        result = "Error!";
+        currentResult = "Error!";
       }
       break;
   }
 
-  if(operationCount === 1){
-    isOperatorRepeat = true;
-    primaryDisplay.textContent = result;
-    secondaryDisplay.textContent += `${currentValue}`;
-    previousValue = result;
+  if (operationCount > 1) {
+    previousValue = currentResult;
   }
-
-  logValues()
 }
 
 function printResult() {
-  if(operator === "+" || operator === "-" || operator === "*" || operator === "/" ){
-    primaryDisplay.textContent = result;
+  if (operator === "+" || operator === "-" || operator === "*" || operator === "/") {
+    primaryDisplay.textContent = currentResult;
     secondaryDisplay.textContent += `${currentValue}`;
-    previousValue = result;
+    isNewOperation = true; // Set isNewOperation to true after completing an operation
     currentValue = "";
     operationCount = 0;
     resetOperatorHover();
@@ -132,7 +106,7 @@ function printResult() {
     primaryDisplay.textContent = currentValue;
     operationCount = 0;
   }
-  logValues()
+  logValues();
 }
 
 //==================================================================================================================
