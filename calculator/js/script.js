@@ -98,7 +98,7 @@ function calculate(numOne, numTwo) {
   }
 
   if (operationCount > 1) {
-    previousValue = currentResult;
+    primaryDisplay.textContent = currentResult;
   }
 }
 
@@ -108,6 +108,7 @@ function printResult() {
     primaryDisplay.textContent = currentResult;
     secondaryDisplay.textContent += `${currentValue}`;
     isNewOperation = true; // Set isNewOperation to true after completing an operation
+    previousValue = result;
     currentValue = "";
   } else {
     // If there was no operation, simply display the current value
