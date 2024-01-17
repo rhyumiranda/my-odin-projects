@@ -57,7 +57,6 @@ function setOperator(op) {
   setupHoverButton(operator);
 }
 
-
 function updateDisplay() {
   primaryDisplay.textContent = currentValue;
 
