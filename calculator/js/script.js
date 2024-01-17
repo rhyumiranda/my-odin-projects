@@ -2,10 +2,9 @@ let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
 let currentValue = "";
 let previousValue = "";
-
+//RP
+//RP 2
 let operator = "";
-let result = 0;
-
 let isOperatorActive = false;
 let operationCount = 0;
 let removeHover;
@@ -37,10 +36,20 @@ function setOperator(op) {
   operator = op;
 
   if (!isNewOperation) {
-    calculate(parseFloat(previousValue), parseFloat(currentValue)); // Calculate previous operation
-    previousValue = currentResult; // Set previousValue based on the current result
+    if(currentResult > 0){
+      calculate(parseFloat(previousValue), parseFloat(currentValue));
+      previousValue = parseFloat(currentResult)
+    } else if(currentResult === 0){
+      calculate(parseFloat(previousValue), parseFloat(currentValue));
+      previousValue = parseFloat(currentValue);
+    }
+    ; // Set previousValue based on the current result
   } else {
-    previousValue = parseFloat(currentValue); // Set previousValue based on the current value if it's a new operation
+    if (currentResult !== undefined) {
+      previousValue = currentResult; // Set previousValue to currentResult if it's defined
+    } else {
+      previousValue = parseFloat(currentValue); // Set previousValue based on the current value if it's a new operation and currentResult is undefined
+    }
     isNewOperation = false;
   }
 
@@ -68,7 +77,7 @@ function clearDisplay() {
   currentValue = "";
   previousValue = "";
   operator = "";
-  result = 0;
+  currentResult = 0;
   operationCount = 0;
 
   isNewOperation = true;
@@ -90,27 +99,27 @@ function calculate(numOne, numTwo) {
       break;
     case "/":
       if (numTwo !== 0) {
-        currentResult = numOne / numTwo;
+        
       } else {
         currentResult = "Error!";
       }
       break;
   }
 
-  if (operationCount > 1) {
+  if (operationCount > 0) {
+    secondaryDisplay.textContent += `${currentValue}`;
     primaryDisplay.textContent = currentResult;
   }
 }
 
 function printResult() {
-  if (operationCount > 0) {
+  if(operationCount > 0){
     calculate(parseFloat(previousValue), parseFloat(currentValue));
     primaryDisplay.textContent = currentResult;
-    secondaryDisplay.textContent += `${currentValue}`;
     isNewOperation = true; // Set isNewOperation to true after completing an operation
-    previousValue = result;
+    previousValue = currentResult;
     currentValue = "";
-  } else {
+  }else {
     // If there was no operation, simply display the current value
     primaryDisplay.textContent = parseFloat(currentValue);
   }
