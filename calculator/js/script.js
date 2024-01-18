@@ -1,10 +1,14 @@
+//RP
+//RP
+//RP
+//RP
+//RP
+//RP6
+//RP7
 let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
 let currentValue = "";
 let previousValue = "";
-//RP
-//RP
-//RP
 let operator = "";
 let isOperatorActive = false;
 let operationCount = 0;
@@ -18,6 +22,7 @@ function appendNumber(number) {
     if (isNewOperation) {
       previousValue = parseFloat(currentValue); // Set previousValue based on currentResult
       isNewOperation = false;
+      operationCount = 0;
     }
 
     currentValue = String(number);
@@ -35,11 +40,7 @@ function setOperator(op) {
   isOperatorActive = true;
   removeHover = false;
   operator = op;
-
-  isOperatorActive = true;
-  removeHover = false;
-  operator = op;
-
+  
   if (!isNewOperation) {
     calculate(parseFloat(previousValue), parseFloat(currentValue));
     previousValue = (currentResult === 0) ? parseFloat(currentValue) : currentResult;
@@ -52,7 +53,7 @@ function setOperator(op) {
     isNewOperation = false;
   }
 
-
+  isNewOperation = false;
   operationCount++;
   setupHoverButton(operator);
 }
@@ -75,7 +76,6 @@ function clearDisplay() {
   operator = "";
   currentValue = "";
   previousValue = "";
-  operator = "";
   currentResult = 0;
   operationCount = 0;
 
@@ -98,7 +98,7 @@ function calculate(numOne, numTwo) {
       break;
     case "/":
       if (numTwo !== 0) {
-        
+        currentResult = numOne / numTwo;
       } else {
         currentResult = "Error!";
       }
@@ -109,17 +109,17 @@ function calculate(numOne, numTwo) {
     secondaryDisplay.textContent += `${currentValue}`;
     primaryDisplay.textContent = currentResult;
   }
+
 }
 
 function printResult() {
   if(operationCount > 0){
     calculate(parseFloat(previousValue), parseFloat(currentValue));
     primaryDisplay.textContent = currentResult;
-    isNewOperation = true; // Set isNewOperation to true after completing an operation
+    isNewOperation = true;
     previousValue = currentResult;
     currentValue = "";
   }else {
-    // If there was no operation, simply display the current value
     primaryDisplay.textContent = parseFloat(currentValue);
   }
   logValues();
@@ -168,5 +168,6 @@ function logValues(){
   console.log("currentValue: " + currentValue);
   console.log("previousValue: " + previousValue);
   console.log("result: " + currentResult);
+  console.log("operator: " + operator);
   console.log("===================");
 }
