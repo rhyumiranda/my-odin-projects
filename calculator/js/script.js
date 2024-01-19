@@ -9,7 +9,7 @@ let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
 let currentValue = "";
 let previousValue = "";
-let operator = "";
+let currentOperator = "";
 let isOperatorActive = false;
 let operationCount = 0;
 let removeHover;
@@ -23,6 +23,7 @@ function appendNumber(number) {
       previousValue = parseFloat(currentValue); // Set previousValue based on currentResult
       isNewOperation = false;
       operationCount = 0;
+      logValues();
     }
 
     currentValue = String(number);
@@ -39,23 +40,26 @@ function appendNumber(number) {
 function setOperator(op) {
   isOperatorActive = true;
   removeHover = false;
-  operator = op;
   
   if (!isNewOperation) {
-    calculate(parseFloat(previousValue), parseFloat(currentValue));
-    previousValue = (currentResult === 0) ? parseFloat(currentValue) : currentResult;
-  } else {
-    if (currentResult !== undefined && currentResult !== 0) {
+    // Check if there's a previous result
+    if (currentResult !== undefined) {
       previousValue = currentResult;
     } else {
       previousValue = parseFloat(currentValue);
     }
+    
+    calculate(previousValue, parseFloat(currentValue), currentOperator);
+    currentOperator = op; // Update currentOperator for the new operation
+    previousValue = currentResult;
+  } else {
+    previousValue = parseFloat(currentValue);
     isNewOperation = false;
+    currentOperator = op; // Update currentOperator for the new operation
   }
 
-  isNewOperation = false;
   operationCount++;
-  setupHoverButton(operator);
+  setupHoverButton(currentOperator);
 }
 
 function updateDisplay() {
@@ -85,8 +89,8 @@ function clearDisplay() {
   resetOperatorHover();
 }
 
-function calculate(numOne, numTwo) {
-  switch (operator) {
+function calculate(numOne, numTwo, op) {
+  switch (op) {
     case "+":
       currentResult = numOne + numTwo;
       break;
@@ -109,7 +113,6 @@ function calculate(numOne, numTwo) {
     secondaryDisplay.textContent += `${currentValue}`;
     primaryDisplay.textContent = currentResult;
   }
-
 }
 
 function printResult() {
@@ -166,8 +169,8 @@ function resetOperatorHover(){
 function logValues(){
   console.log("===================");
   console.log("currentValue: " + currentValue);
+  console.log("operator: " + operator);
   console.log("previousValue: " + previousValue);
   console.log("result: " + currentResult);
-  console.log("operator: " + operator);
   console.log("===================");
 }
