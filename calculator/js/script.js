@@ -1,5 +1,6 @@
 //RP 1
 //RP 2
+//RP 3
 let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
 let currentValue = "";
@@ -116,6 +117,21 @@ function printResult() {
     primaryDisplay.textContent = parseFloat(currentValue);
   }
   logValues();
+}
+
+function convertSign(){
+  if(primaryDisplay.textContent === currentValue){
+    currentValue *= -1;
+    primaryDisplay.textContent = currentValue;
+    return currentValue;
+  } 
+  
+  if(primaryDisplay.textContent === currentResult || primaryDisplay.textContent === String(currentResult)){
+    previousValue *= -1;
+    currentResult *= -1;
+    primaryDisplay.textContent = currentResult;
+    return currentResult;
+  }
 }
 
 //==================================================================================================================
