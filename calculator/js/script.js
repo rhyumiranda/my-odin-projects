@@ -1,15 +1,10 @@
-//RP
-//RP
-//RP
-//RP
-//RP
-//RP6
-//RP7
+//RP 1
+//RP 2
 let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
 let currentValue = "";
 let previousValue = "";
-let currentOperator = "";
+let operator = "";
 let isOperatorActive = false;
 let operationCount = 0;
 let removeHover;
@@ -40,26 +35,19 @@ function appendNumber(number) {
 function setOperator(op) {
   isOperatorActive = true;
   removeHover = false;
-  
+
   if (!isNewOperation) {
-    // Check if there's a previous result
-    if (currentResult !== undefined) {
-      previousValue = currentResult;
-    } else {
-      previousValue = parseFloat(currentValue);
-    }
-    
-    calculate(previousValue, parseFloat(currentValue), currentOperator);
-    currentOperator = op; // Update currentOperator for the new operation
-    previousValue = currentResult;
-  } else {
-    previousValue = parseFloat(currentValue);
-    isNewOperation = false;
-    currentOperator = op; // Update currentOperator for the new operation
+    calculate(parseFloat(previousValue), parseFloat(currentValue), operator);
+    currentResult = parseFloat(primaryDisplay.textContent);
   }
 
+  operator = op; // Update operator for the new operation
+  previousValue = parseFloat(primaryDisplay.textContent) || parseFloat(currentValue);
+  isNewOperation = false;
+
   operationCount++;
-  setupHoverButton(currentOperator);
+  setupHoverButton(operator);
+  logValues();
 }
 
 function updateDisplay() {
@@ -117,11 +105,13 @@ function calculate(numOne, numTwo, op) {
 
 function printResult() {
   if(operationCount > 0){
-    calculate(parseFloat(previousValue), parseFloat(currentValue));
+    calculate(parseFloat(previousValue), parseFloat(currentValue), operator);
     primaryDisplay.textContent = currentResult;
     isNewOperation = true;
     previousValue = currentResult;
     currentValue = "";
+    operationCount = 0;
+    isOperatorActive = false;
   }else {
     primaryDisplay.textContent = parseFloat(currentValue);
   }
