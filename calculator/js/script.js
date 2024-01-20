@@ -3,6 +3,7 @@
 //RP 3
 let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
+let clearBtn = document.getElementById("clear-button")
 let currentValue = "";
 let previousValue = "";
 let operator = "";
@@ -24,6 +25,7 @@ function appendNumber(number) {
 
     currentValue = String(number);
     isOperatorActive = false;
+    clearBtn.textContent = 'C';
   } else {
     currentValue += String(number);
   }
@@ -64,18 +66,26 @@ function updateDisplay() {
 }
 
 function clearDisplay() {
-  primaryDisplay.textContent = "0";
-  secondaryDisplay.textContent = '';
-  operator = "";
-  currentValue = "";
-  previousValue = "";
-  currentResult = 0;
-  operationCount = 0;
+  console.log("parseFloat(primaryDisplay.textContent):", parseFloat(primaryDisplay.textContent));
 
-  isNewOperation = true;
-  isOperatorActive = false;
 
-  resetOperatorHover();
+  if(parseFloat(currentValue) > 0){
+    currentValue = "";
+    primaryDisplay.textContent = currentValue;
+  } else if(currentValue === 0 || currentValue === ''){
+    clearBtn.textContent = 'AC';
+    primaryDisplay.textContent = "0";
+    secondaryDisplay.textContent = '';
+    operator = "";
+    currentValue = "";
+    previousValue = "";
+    currentResult = 0;
+    operationCount = 0;
+    isNewOperation = true;
+    isOperatorActive = false;
+    resetOperatorHover();
+  }
+  logValues();
 }
 
 function calculate(numOne, numTwo, op) {
