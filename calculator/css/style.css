@@ -104,9 +104,9 @@
   text-align: right;
   color: #fffefe;
   width: 255px;
-  overflow: auto;
+  overflow: visible;
   white-space: normal;
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
 }
 
 #second-display {
