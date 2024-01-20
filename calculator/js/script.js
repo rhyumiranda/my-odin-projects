@@ -99,14 +99,14 @@ function calculate(numOne, numTwo, op) {
 
   if (operationCount > 0) {
     secondaryDisplay.textContent += `${currentValue}`;
-    primaryDisplay.textContent = currentResult;
+    primaryDisplay.textContent = Math.ceil(currentResult * 100) / 100;
   }
 }
 
 function printResult() {
   if(operationCount > 0){
     calculate(parseFloat(previousValue), parseFloat(currentValue), operator);
-    primaryDisplay.textContent = currentResult;
+    primaryDisplay.textContent = Math.ceil(currentResult * 100) / 100;
     isNewOperation = true;
     previousValue = currentResult;
     currentValue = "";
