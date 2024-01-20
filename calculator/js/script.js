@@ -120,13 +120,16 @@ function printResult() {
 }
 
 function convertSign(){
-  if(primaryDisplay.textContent === currentValue){
+  if (parseFloat(primaryDisplay.textContent) === parseFloat(currentValue)) {
     currentValue *= -1;
     primaryDisplay.textContent = currentValue;
     return currentValue;
-  } 
-  
-  if(primaryDisplay.textContent === currentResult || primaryDisplay.textContent === String(currentResult)){
+  }
+
+  if (
+    parseFloat(primaryDisplay.textContent) === currentResult ||
+    primaryDisplay.textContent === String(currentResult)
+  ) {
     previousValue *= -1;
     currentResult *= -1;
     primaryDisplay.textContent = currentResult;
@@ -134,6 +137,23 @@ function convertSign(){
   }
 }
 
+function convertToPercent(){
+  if (parseFloat(primaryDisplay.textContent) === parseFloat(currentValue)) {
+    currentValue /= 100;
+    primaryDisplay.textContent = currentValue;
+    return currentValue;
+  }
+
+  if (
+    parseFloat(primaryDisplay.textContent) === currentResult ||
+    primaryDisplay.textContent === String(currentResult)
+  ) {
+    previousValue /= 100;
+    currentResult /= 100;
+    primaryDisplay.textContent = currentResult;
+    return currentResult;
+  }
+}
 //==================================================================================================================
 
 function removeHoverEffect(buttons, classList){
