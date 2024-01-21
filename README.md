@@ -50,6 +50,12 @@ These are the projects I created from the foundations curriculum of The Odin Pro
   Check here!
 </a>
 </div>
+</br>
+
+<br>
+<h3 align ="center">
+  Calculator
+</h3>
 
 <div align = "center">
 <a href = "https://rhyumiranda.github.io/my-odin-projects/calculator/">
