@@ -4,6 +4,7 @@ let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
 let clearBtn = document.getElementById("clear-button");
 let decimalBtn = document.getElementById("decimal-button");
+let currentTimeElement = document.getElementById("time");
 let currentValue = 0;
 let previousValue = "";
 let operator = "";
@@ -230,3 +231,27 @@ function logValues(){
   console.log("result: " + currentResult);
   console.log("===================");
 }
+
+function updateClock() {
+  let now = new Date();
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let ampm = hours >= 12 ? 'pm' : 'am';
+
+  hours = hours % 12;
+  hours = hours ? hours : 12; // Handle midnight (0 hours)
+
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+
+  var timeString = hours + ':' + minutes + ampm;
+
+  // Set the value of the clock to the content of the currentTime element
+  currentTimeElement.textContent = timeString;
+}
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+
+// Initial update
+updateClock();
