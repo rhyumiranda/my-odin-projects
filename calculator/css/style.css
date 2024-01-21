@@ -13,46 +13,53 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body{
+  background-color: #dddddd;
+}
 /*==============
   Container Section
   ==============*/
 
 #container{
   display: flex;
-  
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -1325px;
 }
 
 #phone-emboss{
-  margin-top: 30.5px;
-  position: absolute;
   width: 305px;
   height: 636px;
+  border-radius: 50px;
+  z-index: 1;
+  border: 2px solid black;
+  box-shadow: 0 0 8px 2px rgb(173, 173, 173);
   background: linear-gradient(
     to top right,
     #dbdbdb 40%, #a7a7a7 50%
   );
   background-color: #dfdfdf;
-  border-radius: 50px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  border: 2px solid black;
+  position: relative;
+  top: 766px;
+  left: 0;
+  transform: translate(0, 100%);
 }
 
 #phone-frame{
   margin-top: 30.5px;
-  position: absolute;
   width: 295px;
   height: 627px;
   background: linear-gradient(to right, #545454 10%,#000000,#545454 90%);
   background-color: #4e4e4e;
   border-radius: 47px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 1;
   border: 2px solid black;
+  position: relative;
+  top: 113px;
+  left: 0;
+  transform: translate(0, 100%);
 }
 
 #led-screen {
@@ -109,7 +116,7 @@
   align-items: center;
   width: 270px;
   height: 595px;
-  background-color: rgb(15, 15, 15);
+  background-color: rgb(12, 12, 12); /*Screen Background*/
   border-radius: 35px;
 }
 
@@ -155,24 +162,28 @@
   width: 255px;
   overflow: visible;
   white-space: normal;
-  /* word-wrap: break-word; */
 }
 
 #second-display {
   font-size: 20px;
   font-family: SfPro;
   text-align: right;
-  position: absolute;
-  top: -20px;
-  left: 253px;
-  transform: translateY(100%);
-  transform: translateX(-100%);
   color: #5c5c5c;
   width: 255px;
   overflow: auto;
   white-space: normal;
   word-wrap: break-word;
+
+  position: relative;
+  top: -20px;
+  left: 510px;
+  transform: translateY(100%);
+  transform: translateX(-100%);
 }
+
+/*==============
+  Icons Navigation
+  ==============*/
 
 #time{
   font-family: SfProSemiBold;
@@ -181,6 +192,20 @@
   position: absolute;
   top: 0;
   left: 0;
+  transform: translate(60%,90%);
+}
+
+#signal,
+#wifi,
+#battery{
+  width: auto;
+  height: 10px;
+}
+
+.icons{
+  position: absolute;
+  top: 0;
+  left: 180px;
   transform: translate(60%,70%);
 }
 
@@ -275,4 +300,5 @@ footer {
   left: 0;
   z-index: 10;
   text-align: center;
+  font-family: SfProSemiBold;
 }
