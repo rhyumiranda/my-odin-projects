@@ -20,17 +20,17 @@ function appendNumber(number) {
       isNewOperation = false;
       operationCount = 0;
     }
-    
+
     currentValue = String(number);
     isOperatorActive = false;
-    clearBtn.textContent = 'C';
+    clearBtn.textContent = "C";
   } else {
-    if(currentValue === 0){
+    if (currentValue === 0) {
       currentValue = "";
       currentValue += String(number);
-    } else if(currentValue === '0.'){
+    } else if (currentValue === "0.") {
       currentValue += String(number);
-    }else{
+    } else {
       currentValue += String(number);
     }
   }
@@ -39,14 +39,14 @@ function appendNumber(number) {
   resetOperatorHover();
 }
 
-function enableDecimalBtn(){
-  if (String(currentValue).includes('.')) {
+function enableDecimalBtn() {
+  if (String(currentValue).includes(".")) {
     return;
   }
-  if (currentValue === 0 || currentValue === '') {
-    currentValue = '0.';
+  if (currentValue === 0 || currentValue === "") {
+    currentValue = "0.";
   } else {
-    currentValue += '.';
+    currentValue += ".";
   }
 
   primaryDisplay.textContent = currentValue;
@@ -62,7 +62,8 @@ function setOperator(op) {
   }
 
   operator = op;
-  previousValue = parseFloat(primaryDisplay.textContent) || parseFloat(currentValue);
+  previousValue =
+    parseFloat(primaryDisplay.textContent) || parseFloat(currentValue);
   isNewOperation = false;
 
   operationCount++;
@@ -82,14 +83,14 @@ function updateDisplay() {
 }
 
 function clearDisplay() {
-  if(parseFloat(currentValue) > 0 || currentValue === '0.'){
+  if (parseFloat(currentValue) > 0 || currentValue === "0.") {
     currentValue = "";
     primaryDisplay.textContent = currentValue;
     shouldAddDecimal = false;
-  } else if(currentValue === 0 || currentValue === ''){
-    clearBtn.textContent = 'AC';
+  } else if (currentValue === 0 || currentValue === "") {
+    clearBtn.textContent = "AC";
     primaryDisplay.textContent = "0";
-    secondaryDisplay.textContent = '';
+    secondaryDisplay.textContent = "";
     operator = "";
     currentValue = 0;
     previousValue = "";
@@ -129,7 +130,7 @@ function calculate(numOne, numTwo, op) {
 }
 
 function printResult() {
-  if(operationCount > 0){
+  if (operationCount > 0) {
     calculate(parseFloat(previousValue), parseFloat(currentValue), operator);
     primaryDisplay.textContent = Math.ceil(currentResult * 100) / 100;
     isNewOperation = true;
@@ -138,12 +139,12 @@ function printResult() {
     operationCount = 0;
     isOperatorActive = false;
     shouldAddDecimal = false;
-  }else {
+  } else {
     primaryDisplay.textContent = parseFloat(currentValue);
   }
 }
 
-function convertSign(){
+function convertSign() {
   if (parseFloat(primaryDisplay.textContent) === parseFloat(currentValue)) {
     currentValue *= -1;
     primaryDisplay.textContent = currentValue;
@@ -161,7 +162,7 @@ function convertSign(){
   }
 }
 
-function convertToPercent(){
+function convertToPercent() {
   if (parseFloat(primaryDisplay.textContent) === parseFloat(currentValue)) {
     currentValue /= 100;
     primaryDisplay.textContent = currentValue;
@@ -179,38 +180,47 @@ function convertToPercent(){
   }
 }
 
-function removeHoverEffect(buttons, classList){
-  buttons.forEach((button) =>{
+function removeHoverEffect(buttons, classList) {
+  buttons.forEach((button) => {
     button.classList.remove(classList);
   });
 }
 
-function setupHoverButton(btn){
-  let additionBtn = document.getElementById('addition');
-  let subtractionBtn = document.getElementById('subtraction');
-  let multiplicationBtn = document.getElementById('multiplication');
-  let divisionBtn = document.getElementById('division');
+function setupHoverButton(btn) {
+  let additionBtn = document.getElementById("addition");
+  let subtractionBtn = document.getElementById("subtraction");
+  let multiplicationBtn = document.getElementById("multiplication");
+  let divisionBtn = document.getElementById("division");
 
-  if(btn === '+'){
-    removeHoverEffect([subtractionBtn, multiplicationBtn, divisionBtn], "hovered");
+  if (btn === "+") {
+    removeHoverEffect(
+      [subtractionBtn, multiplicationBtn, divisionBtn],
+      "hovered"
+    );
     additionBtn.classList.add("hovered");
-  } else if(btn === '-'){
+  } else if (btn === "-") {
     removeHoverEffect([additionBtn, multiplicationBtn, divisionBtn], "hovered");
     subtractionBtn.classList.add("hovered");
-  } else if(btn === '*'){
+  } else if (btn === "*") {
     removeHoverEffect([additionBtn, subtractionBtn, divisionBtn], "hovered");
     multiplicationBtn.classList.add("hovered");
-  } else if (btn === '/'){
-    removeHoverEffect([additionBtn, subtractionBtn, multiplicationBtn], "hovered");
+  } else if (btn === "/") {
+    removeHoverEffect(
+      [additionBtn, subtractionBtn, multiplicationBtn],
+      "hovered"
+    );
     divisionBtn.classList.add("hovered");
   }
-  
+
   if (removeHover === true) {
-    removeHoverEffect([additionBtn, subtractionBtn, multiplicationBtn, divisionBtn], "hovered");
+    removeHoverEffect(
+      [additionBtn, subtractionBtn, multiplicationBtn, divisionBtn],
+      "hovered"
+    );
   }
 }
 
-function resetOperatorHover(){
+function resetOperatorHover() {
   removeHover = true;
   setupHoverButton();
 }
@@ -220,14 +230,14 @@ function updateClock() {
 
   let hours = now.getHours();
   let minutes = now.getMinutes();
-  let ampm = hours >= 12 ? ' PM' : ' AM';
+  let ampm = hours >= 12 ? " PM" : " AM";
 
   hours = hours % 12;
   hours = hours ? hours : 12;
 
-  minutes = minutes < 10 ? '0' + minutes : minutes;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
 
-  var timeString = hours + ':' + minutes + ampm;
+  var timeString = hours + ":" + minutes + ampm;
 
   currentTimeElement.textContent = timeString;
 }
