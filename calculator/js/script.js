@@ -1,5 +1,3 @@
-//LAST
-//RP
 let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
 let clearBtn = document.getElementById("clear-button");
@@ -185,7 +183,6 @@ function convertToPercent(){
     return currentResult;
   }
 }
-//==================================================================================================================
 
 function removeHoverEffect(buttons, classList){
   buttons.forEach((button) =>{
