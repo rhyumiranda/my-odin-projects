@@ -19,7 +19,6 @@ function appendNumber(number) {
       previousValue = parseFloat(currentValue);
       isNewOperation = false;
       operationCount = 0;
-      logValues();
     }
     
     currentValue = String(number);
@@ -38,7 +37,6 @@ function appendNumber(number) {
 
   updateDisplay();
   resetOperatorHover();
-  logValues();
 }
 
 function enableDecimalBtn(){
@@ -69,7 +67,6 @@ function setOperator(op) {
 
   operationCount++;
   setupHoverButton(operator);
-  logValues();
 }
 
 function updateDisplay() {
@@ -103,7 +100,6 @@ function clearDisplay() {
     shouldAddDecimal = false;
     resetOperatorHover();
   }
-  logValues();
 }
 
 function calculate(numOne, numTwo, op) {
@@ -145,7 +141,6 @@ function printResult() {
   }else {
     primaryDisplay.textContent = parseFloat(currentValue);
   }
-  logValues();
 }
 
 function convertSign(){
@@ -218,15 +213,6 @@ function setupHoverButton(btn){
 function resetOperatorHover(){
   removeHover = true;
   setupHoverButton();
-}
-
-function logValues(){
-  console.log("===================");
-  console.log("currentValue: " + currentValue);
-  console.log("operator: " + operator);
-  console.log("previousValue: " + previousValue);
-  console.log("result: " + currentResult);
-  console.log("===================");
 }
 
 function updateClock() {
