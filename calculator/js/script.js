@@ -1,38 +1,58 @@
-//RP 1
-//RP 2
-//RP 3
+//LAST
+//RP
 let primaryDisplay = document.getElementById("primary-display");
 let secondaryDisplay = document.getElementById("second-display");
-let clearBtn = document.getElementById("clear-button")
-let currentValue = "";
+let clearBtn = document.getElementById("clear-button");
+let decimalBtn = document.getElementById("decimal-button");
+let currentValue = 0;
 let previousValue = "";
 let operator = "";
 let isOperatorActive = false;
 let operationCount = 0;
 let removeHover;
-
+let shouldAddDecimal = false;
 let isNewOperation = true;
-let currentResult = 0; // Store the current result
+let currentResult = 0;
 
 function appendNumber(number) {
   if (isOperatorActive) {
     if (isNewOperation) {
-      previousValue = parseFloat(currentValue); // Set previousValue based on currentResult
+      previousValue = parseFloat(currentValue);
       isNewOperation = false;
       operationCount = 0;
       logValues();
     }
-
+    
     currentValue = String(number);
     isOperatorActive = false;
     clearBtn.textContent = 'C';
   } else {
-    currentValue += String(number);
+    if(currentValue === 0){
+      currentValue = "";
+      currentValue += String(number);
+    } else if(currentValue === '0.'){
+      currentValue += String(number);
+    }else{
+      currentValue += String(number);
+    }
   }
 
   updateDisplay();
   resetOperatorHover();
   logValues();
+}
+
+function enableDecimalBtn(){
+  if (String(currentValue).includes('.')) {
+    return;
+  }
+  if (currentValue === 0 || currentValue === '') {
+    currentValue = '0.';
+  } else {
+    currentValue += '.';
+  }
+
+  primaryDisplay.textContent = currentValue;
 }
 
 function setOperator(op) {
@@ -44,7 +64,7 @@ function setOperator(op) {
     currentResult = parseFloat(primaryDisplay.textContent);
   }
 
-  operator = op; // Update operator for the new operation
+  operator = op;
   previousValue = parseFloat(primaryDisplay.textContent) || parseFloat(currentValue);
   isNewOperation = false;
 
@@ -66,23 +86,22 @@ function updateDisplay() {
 }
 
 function clearDisplay() {
-  console.log("parseFloat(primaryDisplay.textContent):", parseFloat(primaryDisplay.textContent));
-
-
-  if(parseFloat(currentValue) > 0){
+  if(parseFloat(currentValue) > 0 || currentValue === '0.'){
     currentValue = "";
     primaryDisplay.textContent = currentValue;
+    shouldAddDecimal = false;
   } else if(currentValue === 0 || currentValue === ''){
     clearBtn.textContent = 'AC';
     primaryDisplay.textContent = "0";
     secondaryDisplay.textContent = '';
     operator = "";
-    currentValue = "";
+    currentValue = 0;
     previousValue = "";
     currentResult = 0;
     operationCount = 0;
     isNewOperation = true;
     isOperatorActive = false;
+    shouldAddDecimal = false;
     resetOperatorHover();
   }
   logValues();
@@ -123,6 +142,7 @@ function printResult() {
     currentValue = "";
     operationCount = 0;
     isOperatorActive = false;
+    shouldAddDecimal = false;
   }else {
     primaryDisplay.textContent = parseFloat(currentValue);
   }
