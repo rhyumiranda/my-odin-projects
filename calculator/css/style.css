@@ -12,7 +12,40 @@
   Container Section
   ==============*/
 
-#phone {
+#phone-emboss{
+  margin-top: 30.5px;
+  position: absolute;
+  width: 305px;
+  height: 636px;
+  background: linear-gradient(
+    to top right,
+    #dbdbdb 40%, #a7a7a7 50%
+  );
+  background-color: #dfdfdf;
+  border-radius: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  border: 2px solid black;
+}
+
+#phone-frame{
+  margin-top: 30.5px;
+  position: absolute;
+  width: 295px;
+  height: 627px;
+  background: linear-gradient(to right, #545454 10%,#000000,#545454 90%);
+  background-color: #4e4e4e;
+  border-radius: 47px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border: 2px solid black;
+}
+
+#led-screen {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +56,8 @@
   width: 281.25px;
   height: 609px;
   background-color: black;
-  border-radius: 60px;
+  border-radius: 40px;
+  z-index: 1;
 }
 
 #brove {
@@ -44,7 +78,7 @@
   background-color: #222222;
   display: block;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 13px;
   border-radius: 20px;
 }
 
@@ -59,14 +93,14 @@
   width: 110px;
 }
 
-#phone-screen {
+#display {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 270px;
   height: 595px;
-  background-color: rgb(22, 22, 22);
-  border-radius: 50px;
+  background-color: rgb(11, 11, 11);
+  border-radius: 35px;
 }
 
 #button-container {
