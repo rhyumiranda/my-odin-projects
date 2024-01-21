@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'SfPRO';
-  src: url('../font/SF-Pro-Display-Light.ttf') format('truetype');
+  font-family: "SfPRO";
+  src: url("../font/SF-Pro-Display-Light.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'SfProSemiBold';
-  src: url('../font/sf-pro-text-semibold.ttf') format('truetype');
+  font-family: "SfProSemiBold";
+  src: url("../font/sf-pro-text-semibold.ttf") format("truetype");
 }
 
 * {
@@ -14,14 +14,14 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   background-color: #ffffff;
 }
 /*==============
   Container Section
   ==============*/
 
-#container{
+#container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,17 +29,14 @@ body{
   margin-top: -1340px;
 }
 
-#phone-emboss{
+#phone-emboss {
   width: 305px;
   height: 636px;
   border-radius: 50px;
   z-index: 1;
   border: 2px solid black;
   box-shadow: 0 0 8px 2px rgb(173, 173, 173);
-  background: linear-gradient(
-    to top right,
-    #dbdbdb 40%, #a7a7a7 50%
-  );
+  background: linear-gradient(to top right, #dbdbdb 40%, #a7a7a7 50%);
   background-color: #dfdfdf;
   position: relative;
   top: 766px;
@@ -47,11 +44,11 @@ body{
   transform: translate(0, 100%);
 }
 
-#phone-frame{
+#phone-frame {
   margin-top: 30.5px;
   width: 295px;
   height: 627px;
-  background: linear-gradient(to right, #545454 10%,#000000,#545454 90%);
+  background: linear-gradient(to right, #545454 10%, #000000, #545454 90%);
   background-color: #4e4e4e;
   border-radius: 47px;
   z-index: 1;
@@ -185,28 +182,28 @@ body{
   Icons Navigation
   ==============*/
 
-#time{
+#time {
   font-family: SfProSemiBold;
   font-size: 10px;
   color: rgb(255, 255, 255);
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(60%,90%);
+  transform: translate(60%, 90%);
 }
 
 #signal,
 #wifi,
-#battery{
+#battery {
   width: auto;
   height: 10px;
 }
 
-.icons{
+.icons {
   position: absolute;
   top: 0;
   left: 180px;
-  transform: translate(60%,70%);
+  transform: translate(60%, 70%);
 }
 
 /*==============
@@ -252,22 +249,22 @@ body{
 #button-row-two,
 #button-row-three,
 #button-row-four,
-#button-row-five{
+#button-row-five {
   display: flex;
   gap: 12px;
 }
 
-.utility{
+.utility {
   background-color: #a4a5a4;
   color: black;
 }
 
-.digit{
+.digit {
   background-color: #323233;
   color: #fffefe;
 }
 
-.operand{
+.operand {
   background-color: #fe9901;
   color: #fffefe;
   font-size: 30px;
@@ -282,7 +279,7 @@ body{
 #addition.hovered,
 #subtraction.hovered,
 #multiplication.hovered,
-#division.hovered{
+#division.hovered {
   background-color: #ffffff;
   color: #fe9e0a;
   transition: background-color 0.3s ease;
@@ -307,78 +304,78 @@ footer {
   Media Queries
   ==============*/
 
-@media screen and (max-width: 1024px) and (height: 1366px){
-  #container{
+@media screen and (max-width: 1024px) and (height: 1366px) {
+  #container {
     margin-top: -1025px;
   }
 }
 
-@media screen and (max-width: 820px) and (height: 1180px){
-  #container{
+@media screen and (max-width: 820px) and (height: 1180px) {
+  #container {
     margin-top: -1150px;
   }
 }
 
-@media screen and (max-width: 768px) and (height: 1024px){
-  #container{
+@media screen and (max-width: 768px) and (height: 1024px) {
+  #container {
     margin-top: -1200px;
   }
 }
 
-@media screen and (max-width: 430px){
-  #container{
+@media screen and (max-width: 430px) {
+  #container {
     margin-top: -1275px;
   }
 }
 
-@media screen and (max-width: 414px){
-  #container{
+@media screen and (max-width: 414px) {
+  #container {
     margin-top: -1275px;
   }
 }
 
-@media screen and (max-width: 390px){
-  #container{
+@media screen and (max-width: 390px) {
+  #container {
     margin-top: -1300px;
   }
 }
 
-@media screen and (max-width: 375px) and (max-height: 812px){
-  #container{
+@media screen and (max-width: 375px) and (max-height: 812px) {
+  #container {
     margin-top: -1340px;
   }
 
-  footer{
+  footer {
     bottom: 0;
   }
 }
 
-@media screen and (max-width: 375px) and (max-height: 667px){
-  #container{
+@media screen and (max-width: 375px) and (max-height: 667px) {
+  #container {
     margin-top: -1370px;
   }
 
-  footer{
+  footer {
     bottom: -80px;
   }
 }
 
-@media screen and (max-width: 360px){
-  #container{
+@media screen and (max-width: 360px) {
+  #container {
     margin-top: -1370px;
   }
 
-  footer{
+  footer {
     bottom: 0;
   }
 }
 
-@media screen and (max-width: 320px){
-  #container{
+@media screen and (max-width: 320px) {
+  #container {
     margin-top: -1390px;
   }
 
-  footer{
+  footer {
     bottom: -220px;
   }
 }
