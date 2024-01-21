@@ -237,21 +237,17 @@ function updateClock() {
 
   let hours = now.getHours();
   let minutes = now.getMinutes();
-  let ampm = hours >= 12 ? 'pm' : 'am';
+  let ampm = hours >= 12 ? ' PM' : ' AM';
 
   hours = hours % 12;
-  hours = hours ? hours : 12; // Handle midnight (0 hours)
+  hours = hours ? hours : 12;
 
   minutes = minutes < 10 ? '0' + minutes : minutes;
 
   var timeString = hours + ':' + minutes + ampm;
 
-  // Set the value of the clock to the content of the currentTime element
   currentTimeElement.textContent = timeString;
 }
 
-// Update the clock every second
 setInterval(updateClock, 1000);
-
-// Initial update
 updateClock();
