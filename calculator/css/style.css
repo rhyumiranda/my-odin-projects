@@ -1,6 +1,11 @@
 @font-face {
-  font-family: SfPRO;
-  src: url(../font/SF-Pro-Display-Light.ttf);
+  font-family: 'SfPRO';
+  src: url('../font/SF-Pro-Display-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SfProSemiBold';
+  src: url('../font/sf-pro-text-semibold.ttf') format('truetype');
 }
 
 * {
@@ -11,6 +16,11 @@
 /*==============
   Container Section
   ==============*/
+
+#container{
+  display: flex;
+  
+}
 
 #phone-emboss{
   margin-top: 30.5px;
@@ -99,7 +109,7 @@
   align-items: center;
   width: 270px;
   height: 595px;
-  background-color: rgb(11, 11, 11);
+  background-color: rgb(15, 15, 15);
   border-radius: 35px;
 }
 
@@ -162,6 +172,16 @@
   overflow: auto;
   white-space: normal;
   word-wrap: break-word;
+}
+
+#time{
+  font-family: SfProSemiBold;
+  font-size: 10px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(60%,70%);
 }
 
 /*==============
