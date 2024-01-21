@@ -9,65 +9,67 @@
   </head>
   <body>
     <main>
-      <div id="phone">
-        <div id="brove"><span id="speaker"></span></div>
-        <div id="phone-screen">
-          <div id="calculator">
-            <div class="display">
-              <div id="second-display"></div>
-              <div id="primary-display">0</div>
-            </div>
-            <div id="button-container">
-              <div id="button-row-one">
-                <button
-                  class="btn utility"
-                  id="clear-button"
-                  onclick="clearDisplay()"
-                >
-                  AC
-                </button>
-                <button class="btn utility" id="sign-toggle" onclick="convertSign()">+/-</button>
-                <button class="btn utility" id="percentage-toggle" onclick="convertToPercent()">%</button>
-                <button class="btn operand" id="division" onclick="setOperator('/')">÷</button>
-              </div>
-
-              <div id="button-row-two">
-                <button class="btn digit" onclick="appendNumber(7)">7</button>
-                <button class="btn digit" onclick="appendNumber(8)">8</button>
-                <button class="btn digit" onclick="appendNumber(9)">9</button>
-                <button class="btn operand" id="multiplication" onclick="setOperator('*')">×</button>
-              </div>
-
-              <div id="button-row-three">
-                <button class="btn digit" onclick="appendNumber(4)">4</button>
-                <button class="btn digit" onclick="appendNumber(5)">5</button>
-                <button class="btn digit" onclick="appendNumber(6)">6</button>
-                <button class="btn operand" id="subtraction" onclick="setOperator('-')">-</button>
-              </div>
-
-              <div id="button-row-four">
-                <button class="btn digit" onclick="appendNumber(1)">1</button>
-                <button class="btn digit" onclick="appendNumber(2)">2</button>
-                <button class="btn digit" onclick="appendNumber(3)">3</button>
-                <button class="btn operand" id="addition" onclick="setOperator('+')">+</button>
-              </div>
-
-              <div id="button-row-five">
-                <button
-                  class="btn digit"
-                  id="zero-row-span"
-                  onclick="appendNumber(0)"
-                >
-                  0
-                </button>
-                <button class="btn digit" id="decimal-button" onclick="enableDecimalBtn()">.</button>
-                <button class="btn" id="equal-button" onclick="printResult()">=</button>
-              </div>
-            </div>
-            <span id="dock"></span>
+    <div id="phone-emboss"></div>
+    <div id="phone-frame"></div>
+    <div id="led-screen">
+      <div id="brove"><span id="speaker"></span></div>
+      <div id="display">
+        <div id="calculator">
+          <div class="display">
+            <div id="second-display"></div>
+            <div id="primary-display">0</div>
           </div>
+          <div id="button-container">
+            <div id="button-row-one">
+              <button
+                class="btn utility"
+                id="clear-button"
+                onclick="clearDisplay()"
+              >
+                AC
+              </button>
+              <button class="btn utility" id="sign-toggle" onclick="convertSign()">+/-</button>
+              <button class="btn utility" id="percentage-toggle" onclick="convertToPercent()">%</button>
+              <button class="btn operand" id="division" onclick="setOperator('/')">÷</button>
+            </div>
+
+            <div id="button-row-two">
+              <button class="btn digit" onclick="appendNumber(7)">7</button>
+              <button class="btn digit" onclick="appendNumber(8)">8</button>
+              <button class="btn digit" onclick="appendNumber(9)">9</button>
+              <button class="btn operand" id="multiplication" onclick="setOperator('*')">×</button>
+            </div>
+
+            <div id="button-row-three">
+              <button class="btn digit" onclick="appendNumber(4)">4</button>
+              <button class="btn digit" onclick="appendNumber(5)">5</button>
+              <button class="btn digit" onclick="appendNumber(6)">6</button>
+              <button class="btn operand" id="subtraction" onclick="setOperator('-')">-</button>
+            </div>
+
+            <div id="button-row-four">
+              <button class="btn digit" onclick="appendNumber(1)">1</button>
+              <button class="btn digit" onclick="appendNumber(2)">2</button>
+              <button class="btn digit" onclick="appendNumber(3)">3</button>
+              <button class="btn operand" id="addition" onclick="setOperator('+')">+</button>
+            </div>
+
+            <div id="button-row-five">
+              <button
+                class="btn digit"
+                id="zero-row-span"
+                onclick="appendNumber(0)"
+              >
+                0
+              </button>
+              <button class="btn digit" id="decimal-button" onclick="enableDecimalBtn()">.</button>
+              <button class="btn" id="equal-button" onclick="printResult()">=</button>
+            </div>
+          </div>
+          <span id="dock"></span>
         </div>
       </div>
+    </div>
     </main>
     <footer>
       <p>Copyright © rhyumiranda</p>
