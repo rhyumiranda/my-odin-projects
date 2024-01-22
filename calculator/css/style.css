@@ -304,73 +304,7 @@ footer {
   Media Queries
   ==============*/
 
-@media screen and (max-width: 1024px) and (height: 1366px) {
-  #container {
-    margin-top: -1025px;
-  }
-}
-
-@media screen and (max-width: 820px) and (height: 1180px) {
-  #container {
-    margin-top: -1150px;
-  }
-}
-
-@media screen and (max-width: 768px) and (height: 1024px) {
-  #container {
-    margin-top: -1200px;
-  }
-}
-
-@media screen and (max-width: 430px) {
-  #container {
-    margin-top: -1275px;
-  }
-}
-
-@media screen and (max-width: 414px) and (height: 736px) {
-  #container {
-    margin-top: -1300px;
-  }
-
-  footer {
-    bottom: -100px;
-  }
-}
-
-@media screen and (max-width: 414px) {
-  #container {
-    margin-top: -1275px;
-  }
-}
-
-@media screen and (max-width: 390px) {
-  #container {
-    margin-top: -1300px;
-  }
-}
-
-@media screen and (max-width: 375px) and (max-height: 812px) {
-  #container {
-    margin-top: -1340px;
-  }
-
-  footer {
-    bottom: 0;
-  }
-}
-
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  #container {
-    margin-top: -1370px;
-  }
-
-  footer {
-    bottom: -80px;
-  }
-}
-
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 1440px) and (max-height: 736px){
   #container {
     margin-top: -1370px;
   }
@@ -380,12 +314,42 @@ footer {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) and (max-height: 1000px){
+  #container {
+    margin-top: -1300px;
+  }
+
+  footer {
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 375px) and (max-height: 1000px){
+  #container {
+    margin-top: -1375px;
+  }
+
+  footer {
+    bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 375px) and (max-height: 667px){
+  #container {
+    margin-top: -1375px;
+  }
+
+  footer {
+    bottom: -60px;
+  }
+}
+
+@media screen and (max-width: 320px) and (max-height: 480px){
   #container {
     margin-top: -1390px;
   }
 
   footer {
-    bottom: -220px;
+    bottom: -225px;
   }
 }
