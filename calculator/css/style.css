@@ -34,7 +34,7 @@ body {
   height: 636px;
   border-radius: 50px;
   z-index: 1;
-  border: 2px solid black;
+  border: .5px solid black;
   box-shadow: 0 0 8px 2px rgb(173, 173, 173);
   background: linear-gradient(to top right, #dbdbdb 40%, #a7a7a7 50%);
   background-color: #dfdfdf;
