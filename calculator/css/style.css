@@ -328,6 +328,16 @@ footer {
   }
 }
 
+@media screen and (max-width: 414px) and (height: 736px) {
+  #container {
+    margin-top: -1300px;
+  }
+
+  footer {
+    bottom: -100px;
+  }
+}
+
 @media screen and (max-width: 414px) {
   #container {
     margin-top: -1275px;
