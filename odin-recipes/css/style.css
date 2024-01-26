@@ -1,130 +1,51 @@
-/* This css section is for index.html*/
+*{
+    padding: 0;
+    margin: 0;
+}
+
 body{
-    background-color: #fffeb4;
+    min-height: 100vh;
 }
 
-.title{
-    font-size: 40px;
-    text-align: center;
-    margin: 25px 0px -10px 0px;
+/* ===========
+  Navigation Bar
+=========== */
+nav{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-.font{
-    font-family: Arial, Helvetica, sans-serif;
+label.logo {
+    font-size: 35px;
 }
 
-.homepage-description{
-    font-size: 20px;
-    margin: 20px 50px -10px 50px;
-    text-align: center;
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.sub-title{
-    font-size: 25px;
-    text-align: left;
-    margin: 50px 50px -10px 60px;
+nav li{
+    height: 50px;
 }
 
-.chicken-picture{
-    width:300px;
-    length: auto;
-    margin: 10px 50px -10px 60px;
-    border-radius: 20px;
+nav a{
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    transition: background-color 0.3s ease;
 }
 
-.chicken-curry{
-    margin: -185px 50px -10px 375px;
+nav a:hover{
+    background-color: #eaeaea;
 }
 
-.chicken-description{
-    font-size: 16px;
-    margin: 20px 100px 50px 375px;
+nav li:first-child{
+    margin-right: auto;
 }
-
-.creamy-picture{
-    width: 300px;
-    length: left;
-    margin: 0px 50px -10px 60px;
-    border-radius: 20px;
-}
-
-.creamy-beef{
-    margin: -155px 50px -10px 375px;
-}
-
-.creamy-description{
-    font-size: 16px;
-    margin: 20px 100px -10px 375px;
-}
-
-.cordon-picture{
-    width: 300px;
-    length: left;
-    margin: 50px 50px -10px 60px;
-    border-radius: 20px;
-}
-
-.cordon{
-    margin: -155px 50px -10px 375px;
-}
-
-.cordon-description{
-    font-size: 16px;
-    margin: 20px 100px 50px 375px;
-}
-
-/*This section is for recipes*/
-
-.recipe-pic{
-    width: 600px;
-    length: auto;
-    border-radius: 40px;
-    margin: 20px 50px 0px 375px;
-}
-
-.recipe-name{
-    text-align: left;
-    margin: 20px 50px 0px 375px;
-}
-
-.here{
-    font-size: 20px;
-    margin: 20px 50px 0px 375px;
-}
-
-.ingredients{
-    margin: 20px 50px 0px 375px;
-    font-size: 16px;
-    list-style-type: none;
-}
-
-.how{
-    font-size: 20px;
-    margin: 20px 50px 0px 375px;
-}
-
-.prepare{
-    margin: 20px 50px 0px 375px;
-    font-size: 16px;
-}
-
-.nutrition{
-    font-size: 20px;
-    margin: 20px 50px 0px 375px;
-}
-
-.details{
-    margin: 20px 50px 20px 375px;
-    font-size: 16px;
-}
-
-.but{
-    margin: 0px 0px 0px 375px;
-}
-
-
-
-
-
-
-
