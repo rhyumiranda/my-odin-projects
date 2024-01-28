@@ -7,16 +7,14 @@ body{
     min-height: 100vh;
 }
 
-/* ===========
-  Navigation Bar
-=========== */
+
+/* ============
+Navigation Bar
+============ */
+
 nav{
     background-color: rgb(255, 255, 255);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-}
-
-label.logo {
-    font-size: 35px;
 }
 
 nav ul{
@@ -101,4 +99,34 @@ nav li:first-child{
     .sidebar{
         width: 100%;
     }
+}
+
+/* ============
+Hero Section
+============ */
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.hero-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.plate {
+    grid-area: 1 / 2 / 1 / 3;
+    margin: auto;
+}
+
+div h1 {
+    font-size: 39px;
+}
+
+p {
+    font-size: 20px;
 }
