@@ -87,6 +87,7 @@ Hero Section
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10rem;
 }
 
 .hero .plate {
@@ -130,14 +131,68 @@ Hero Section
 }
 
 /* ============
-Media Query Section
+Card Section
 ============ */
 
-/* @media (max-width: 1024px) {
-  .hero{
-    flex-direction: column;
-  }
-} */
+.card-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 12rem;
+}
+
+.card{
+  width: 300px;
+  height: 350px;
+  border-radius: 30px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============
+Recipe Section
+============ */
+
+.recipe-1 img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.recipe-1 h3{
+  margin-bottom: 10px;
+}
+
+.recipe-2 img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.recipe-2 h3{
+  margin-bottom: 10px;
+}
+
+.recipe-3 img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.recipe-3 h3{
+  margin-bottom: 10px;
+}
+
+
+/* ============
+Media Query Section
+============ */
 
 @media (min-width: 801px) {
   .menu {
@@ -184,6 +239,10 @@ Media Query Section
     justify-content: center;
     align-items: center;
     margin: auto;
+  }
+
+  .card-container{
+    flex-direction: column;
   }
 }
 
