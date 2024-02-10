@@ -21,6 +21,7 @@ nav ul {
   align-items: center;
   background-color: white;
   box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.1);
+  position: fixed;
 }
 
 nav li {
