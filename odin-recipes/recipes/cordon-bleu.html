@@ -3,44 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chicken Curry Recipe</title>
+    <title>Cordon Bleu Recipe</title>
+    <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <img class="recipe-pic" src="../img/cordon-bleu.jpg">
-    <h1 class="recipe-name font">Cordon Bleu with Dijon Sauce</h1>
-    <h2 class="here font">Here are the things you will need:</h2>
-    <ul class="ingredients font">
-        <li>2 lbs. boneless chicken breasts</li>
+    <header>
+      <nav class="navigation-bar">
+        <ul class="sidebar">
+        <li onclick="hideSidebar()">
+            <a href="#"
+            ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+            >
+                <path
+                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                /></svg
+            ></a>
+        </li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Review</a></li>
+        <li><a href="#">Contact Us</a></li>
+        </ul>
+        <ul>
+        <li><a href="../index.html">uChef</a></li>
+        <li class="hide-on-mobile"><a href="../index.html">Home</a></li>
+        <li class="hide-on-mobile"><a href="#">About Us</a></li>
+        <li class="hide-on-mobile"><a href="#">Review</a></li>
+        <li class="hide-on-mobile"><a href="#">Contact Us</a></li>
+        <li onclick="showSidebar()" class="menu">
+            <a href="#"
+            ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="26"
+                viewBox="0 -960 960 960"
+                width="26"
+            >
+                <path
+                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+                /></svg
+            ></a>
+        </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="card-recipe-container">
+      <div class="card-recipe">
+        <img class="recipe-pic" src="../img/cordon-bleu.jpg">
+        <h3>Cordon Bleu Ingredients</h3>
+        <ul>
+          <li>2 lbs. boneless chicken breasts</li>
         <li>3 to 6 pieces sliced ham</li>
         <li>3 to 6 pieces Swiss cheese</li>
         <li>1 1/2 cups Panko bread crumbsd</li>
         <li>2 eggs beaten</li>
         <li>2 cups cooking oil</li>
         <li>2 cups cooking oil</li>
-    </ul>
-    <h2 class="how font">Preparing the Dijon Sauce:</h2>
-    <ul class="ingredients font">
-        <li>½ cup heavy whipping cream</li>
-        <li>2 tablespoons Dijon mustard</li>
-        <li>1 ½ tablespoons butter</li>
-        <li>2 tablespoons minced yellow onion</li>
-        <li>Salt to taste</li>
-    </ul>
-    <h2 class="how font">How to prepare:</h2>
-    <ol class="prepare font">
-        <li>Place a plastic wrap over a flat surface. Arrange a piece of chicken over the wrap, and then cover the chicken with it. Pound the chicken using a meat tenderizer tool until it flattens.</li>
-        <li>Sprinkle salt all over the chicken breast.</li>
-        <li>Prepare the filling by putting a slice of cheese and ham over the chicken. Roll the chicken to cover the filling and then seal it by inserting toothpicks into the rolled chicken.</li>
-        <li>Heat oil in a cooking pot.</li>
-        <li>Dip the chicken in beaten egg and then roll over the bread crumbs. Do this step twice to make the coating thicker.</li>
-        <li>Deep fry for 12 minutes in medium heat. Note. if you need to turn the chicken over to fry the opposite side, you can do so and cook it for 8 minutes. If you will deep while the chicken is fully submerged, 12 minutes should be enough, but feel free to cook no longer than 15 minutes.</li>
-        <li>Remove the chicken from the pot. Let it cool down. Slice into serving pieces.</li>
-        <li>Prepare the sauce by melting butter in a sauce pan. Add onion. Cook until soft.</li>
-        <li>Pour heavy whipping cream. Let boil. Add Dijon mustard. Stir and continue to cook in medium heat until it reduces to half. Add salt to taste.</li>
-        <li>Pour sauce over the chicken. Serve.</li>
-        <li>Share and enjoy!</li>
-    </ol>
-    <a class="but" href="../index.html"><button>Return</button></a>
+        </ul>
+        <br>
+      </div>
+      <div class="card-recipe">
+        <h3>Instructions</h3>
+        <ol>
+          <li>Place a plastic wrap over a flat surface. Arrange a piece of chicken over the wrap, and then cover the chicken with it. Pound the chicken using a meat tenderizer tool until it flattens.</li>
+          <li>Sprinkle salt all over the chicken breast.</li>
+          <li>Prepare the filling by putting a slice of cheese and ham over the chicken. Roll the chicken to cover the filling and then seal it by inserting toothpicks into the rolled chicken.</li>
+          <li>Heat oil in a cooking pot.</li>
+          <li>Dip the chicken in beaten egg and then roll over the bread crumbs. Do this step twice to make the coating thicker.</li>
+          <li>Deep fry for 12 minutes in medium heat. Note. if you need to turn the chicken over to fry the opposite side, you can do so and cook it for 8 minutes. If you will deep while the chicken is fully submerged, 12 minutes should be enough, but feel free to cook no longer than 15 minutes.</li>
+          <li>Remove the chicken from the pot. Let it cool down. Slice into serving pieces.</li>
+          <li>Prepare the sauce by melting butter in a sauce pan. Add onion. Cook until soft.</li>
+          <li>Pour heavy whipping cream. Let boil. Add Dijon mustard. Stir and continue to cook in medium heat until it reduces to half. Add salt to taste.</li>
+          <li>Pour sauce over the chicken. Serve.</li>
+          <li>Share and enjoy!</li>
+        </ol>
+      </div>
+    </div>
 </body>
 </html>
