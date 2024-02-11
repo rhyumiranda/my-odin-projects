@@ -21,7 +21,7 @@ nav ul {
   align-items: center;
   background-color: white;
   box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  z-index: 999;
 }
 
 nav li {
@@ -158,13 +158,15 @@ Card Section
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  height: 100vh;
+  margin: 0 30px;
+  border: 2px solid red;
 }
 
 .card {
+  width: 100%;
   max-width: 500px;
   height: 500px;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 20px;
   background-color: white;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
@@ -179,7 +181,6 @@ Card Section
 
 .card-recipe {
   max-width: 600px;
-  width: 100%;
   height: 100%;
   padding: 20px;
   border-radius: 10px;
@@ -193,7 +194,6 @@ Card Section
 .card-recipe img {
   width: 100%;
   height: auto;
-  border-radius: 20px;
   margin-bottom: 10px;
 }
 
@@ -230,7 +230,7 @@ Recipe Section
 .recipe-1 img {
   width: 100%;
   height: auto;
-  border-radius: 20px;
+  border-radius: 5px;
   margin-bottom: 10px;
 }
 
@@ -241,7 +241,7 @@ Recipe Section
 .recipe-2 img {
   width: 100%;
   height: auto;
-  border-radius: 20px;
+  border-radius: 5px;
   margin-bottom: 10px;
 }
 
@@ -252,7 +252,7 @@ Recipe Section
 .recipe-3 img {
   width: 100%;
   height: auto;
-  border-radius: 20px;
+  border-radius: 5px;
   margin-bottom: 10px;
 }
 
@@ -264,15 +264,96 @@ Recipe Section
 Media Query Section
 ============ */
 
-@media (min-width: 801px) {
+@media (min-width: 1279px) {
+  .menu{
+    display: none;
+  }
+
+  /* .card-container{
+    height: 100vh;
+  } */
+}
+
+
+@media (max-width: 1278px) {
   .menu {
     display: none;
+  }
+
+  /* .card-container{
+    height: 100vh;
+  } */
+
+  .hero {
+    margin-top: 20px;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero .plate {
+    width: 70%;
+    height: auto;
+    padding: 0 30px;
+  }
+
+  .hero-text {
+    padding: 0 60px;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .hero .plate {
+    width: 50%;
+    height: auto;
+    padding: 0 30px;
+  }
+
+  .hero-text button {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+  .card-container {
+    flex-direction: row;
+  }
+
+  .card h3 {
+    font-size: 24px;
+  }
+
+  .card {
+    height: auto;
+  }
+
+  .card p {
+    font-size: 16px;
+  }
+
+  .card-recipe-container {
+    flex-direction: row;
+    align-items: center;
   }
 }
 
 @media (max-width: 800px) {
   .hide-on-mobile {
     display: none;
+  }
+
+  .menu{
+    display: block;
   }
 
   .hero {
@@ -282,7 +363,7 @@ Media Query Section
   }
 
   .hero .plate {
-    width: 80%;
+    width: 70%;
     height: auto;
     padding: 0 30px;
   }
@@ -310,8 +391,14 @@ Media Query Section
     margin: auto;
   }
 
-  .card-container {
+  .card {
+    width: 300px;
+    height: 300px;
+  }
+
+  .card-container{
     flex-direction: column;
+    border: 2px solid blue;
   }
 
   .card-recipe-container {
@@ -320,7 +407,12 @@ Media Query Section
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 425px) {
+
+  .hero{
+    height: 50vh;
+  }
+
   .hide-on-mobile {
     display: none;
   }
@@ -366,10 +458,51 @@ Media Query Section
     align-items: center;
     margin: auto;
   }
+
+  .card-container {
+    gap: 1rem;
+  }
+
+  .card h3 {
+    font-size: 24px;
+  }
+
+  .card {
+    height: auto;
+    width: 100%;
+  }
+
+  .card p {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 375px) {
   .hero {
     margin-top: -4rem;
+    height: 50vh;
+  }
+
+  .hero .plate{
+    margin-top: 30px;
+    width: 90%;
+    z-index: -1;
+  }
+
+  .card-container{
+    margin: 20px 50px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+  }
+
+  .card {
+    height: auto;
+    width: 100%;
+  }
+
+  .card p {
+    font-size: 12px;
   }
 }
